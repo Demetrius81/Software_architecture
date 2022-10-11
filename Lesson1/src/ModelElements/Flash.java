@@ -5,17 +5,30 @@ import Stubs.Color;
 import Stubs.Float;
 import Stubs.Point3D;
 
+/**
+ * Класс - модель источника света.
+ */
 public class Flash {
     public Point3D Location;
     public Angle3D Angle;
     public Color Color;
     public Float Power;
 
-    public void rotate(Angle3D angle){
+    /**
+     * Метод поворачивает источник света.
+     *
+     * @param angle
+     */
+    public void rotate(Angle3D angle) {
 
     }
 
-    public void move(Point3D point){
+    /**
+     * Метод передвигает источник света.
+     *
+     * @param point
+     */
+    public void move(Point3D point) {
 
     }
 }
