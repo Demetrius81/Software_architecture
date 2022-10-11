@@ -1,3 +1,7 @@
+package ModelElements;
+
+import ModelElements.Camera;
+import ModelElements.Flash;
 import Stubs.Type1;
 import Stubs.Type2;
 

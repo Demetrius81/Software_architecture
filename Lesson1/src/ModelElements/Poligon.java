@@ -1,3 +1,5 @@
+package ModelElements;
+
 import Stubs.Point3D;
 
 public class Poligon {

@@ -1,3 +1,7 @@
+package ModelElements;
+
+import ModelElements.Poligon;
+
 public class PoligonalModel {
     public Poligon Poligons;
     public Texture Textures;
