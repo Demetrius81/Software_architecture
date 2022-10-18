@@ -144,80 +144,15 @@ public abstract class Car {
         return true;
     }
 
-
+}
 //метод якорь
     //public void sweeping(){}
 
-    public void setMake(String make) {
-        this.make = make;
-    }
+    //public void setMake(String make) {
+        //this.make = make;
+    //}
 
-    public String getMake() {
-        return make;
-    }
+    //public String getMake() {
+        //return make;
+    //}
 
-
-}
-    public void setBodyType(TypeCar bodyType){
-        this.bodyType = bodyType;
-    }
-    public TypeCar getBodyType(){
-        return bodyType;
-    }
-
-    public void setNumberWheels(int numberWheels){
-        this.numberWheels = numberWheels;
-    }
-    public int getNumberWheels(){
-        return numberWheels;
-    }
-
-    public void setFuelType(TypeFuel fuelType){
-        this.fuelType = fuelType;
-    }
-    public TypeFuel getFuelType(){
-        return fuelType;
-    }
-
-    public void setGearboxType(TypeGearBox gearboxType){
-        this.gearboxType = gearboxType;
-    }
-    public TypeGearBox getGearboxType(){
-        return gearboxType;
-    }
-
-    public void setEngineCapacity(double engineCapacity){
-        this.engineCapacity = engineCapacity;
-    }
-    public double getEngineCapacity(){
-        return engineCapacity;
-    }
-}
-
-
-class  FutereCar extends Car
-{
-    FutereCar()
-    {
-        this.setNumberWheels(3);
-    }
-
-    @Override
-    public void movement()
-    {
-        fly();
-    }
-
-    private void fly(){}
-}
-
-
-interface Refueling {
-    void fuel();
-
-}
-interface Wiping {
-    void wipWindshield();
-    void wipHeadlights();
-    void wipMirrors();
-}
