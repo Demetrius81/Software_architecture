@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3228ee98-1638-4b71-a2ea-39c18fe86c9b" name="Changes" comment="" />
+    <list default="true" id="3228ee98-1638-4b71-a2ea-39c18fe86c9b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Adapter/Adapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Adapter/AppleIphone9.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Adapter/IDevice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Adapter/ServiceComputer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,7 +35,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/проекты/GB/Software_architecture/HomeWork3"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
