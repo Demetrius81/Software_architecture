@@ -53,70 +53,8 @@
 import java.awt.*;
 
 public abstract class Car {
-    public String getMark() {
-        return mark;
-    }
 
-    public String getModel() {
-        return model;
-    }
-
-    public Color getColor() {
-        return color;
-    }
-
-    public BodyType getBodyType() {
-        return bodyType;
-    }
-
-    public int getNumberWheels() {
-        return numberWheels;
-    }
-
-    public TypeFuel getFuelType() {
-        return fuelType;
-    }
-
-    public TypeGearbox getGearboxType() {
-        return gearboxType;
-    }
-
-    public double getEngineCapacity() {
-        return engineCapacity;
-    }
-
-    public void setMark(String mark) {
-        this.mark = mark;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    public void setBodyType(BodyType bodyType) {
-        this.bodyType = bodyType;
-    }
-
-    public void setNumberWheels(int numberWheels) {
-        this.numberWheels = numberWheels;
-    }
-
-    public void setFuelType(TypeFuel fuelType) {
-        this.fuelType = fuelType;
-    }
-
-    public void setGearboxType(TypeGearbox gearboxType) {
-        this.gearboxType = gearboxType;
-    }
-
-    public void setEngineCapacity(double engineCapacity) {
-        this.engineCapacity = engineCapacity;
-    }
-
+    //fields
     private String mark;
     private String model;
     private Color color;
@@ -126,6 +64,72 @@ public abstract class Car {
     private TypeGearbox gearboxType;
     private double engineCapacity;
 
+    //getters & setters
+    public String getMark() {
+        return mark;
+    }
+
+    public void setMark(String mark) {
+        this.mark = mark;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public BodyType getBodyType() {
+        return bodyType;
+    }
+
+    public void setBodyType(BodyType bodyType) {
+        this.bodyType = bodyType;
+    }
+
+    public int getNumberWheels() {
+        return numberWheels;
+    }
+
+    public void setNumberWheels(int numberWheels) {
+        this.numberWheels = numberWheels;
+    }
+
+    public TypeFuel getFuelType() {
+        return fuelType;
+    }
+
+    public void setFuelType(TypeFuel fuelType) {
+        this.fuelType = fuelType;
+    }
+
+    public TypeGearbox getGearboxType() {
+        return gearboxType;
+    }
+
+    public void setGearboxType(TypeGearbox gearboxType) {
+        this.gearboxType = gearboxType;
+    }
+
+    public double getEngineCapacity() {
+        return engineCapacity;
+    }
+
+    public void setEngineCapacity(double engineCapacity) {
+        this.engineCapacity = engineCapacity;
+    }
+
+    //methods
     public void movement() {
     }
 
