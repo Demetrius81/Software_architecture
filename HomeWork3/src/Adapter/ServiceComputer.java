@@ -24,6 +24,6 @@ public class ServiceComputer {
         adapter4.connectUSBA();
         adapter5.connectUSBA();
 
-        System.out.println("\nUpdate connected devices.");
+        System.out.println("\nImproving connected devices.");
     }
 }
