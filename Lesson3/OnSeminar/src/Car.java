@@ -15,7 +15,6 @@
 // - включение дворников.
 
 
-
 //3.	Расширить абстрактный класс «Car», добавить метод:
 // подметать улицу. Создать конкретный автомобиль путём наследования класса «Car».
 // Провести проверку принципа SRP.
@@ -145,15 +144,6 @@ public abstract class Car {
         return true;
     }
 
-}
-//метод якорь
+    //метод якорь
     //public void sweeping(){}
-
-    //public void setMake(String make) {
-        //this.make = make;
-    //}
-
-    //public String getMake() {
-        //return make;
-    //}
-
+}

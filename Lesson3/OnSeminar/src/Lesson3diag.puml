@@ -1,0 +1,90 @@
+@startuml
+
+abstract class Car {
+    - mark: String
+    - model: String
+    - color: Color
+    - bodyType: BodyType
+    - numberWheels: int
+    - fuelType: TypeFuel
+    - gearboxType: TypeGearbox
+    - engineCapacity: double
+    + getMark(): String
+    + setMark(String)
+    + getModel(): String
+    + setModel(String)
+    + getColor(): Color
+    + setColor(Color)
+    + getBodyType(): BodyType
+    + setBodyType(BodyType)
+    + getNumberWheels(): int
+    + setNumberWheels(int)
+    + getFuelType(): TypeFuel
+    + setFuelType(TypeFuel)
+    + getGearboxType(): TypeGearbox
+    + setGearboxType(TypeGearbox)
+    + getEngineCapacity(): double
+    + setEngineCapacity(double)
+
+    + movement()
+    + maintenance()
+    + gearShifting(): boolean
+    + switchHeadlights(): boolean
+    + switchWipers(): boolean
+}
+
+class PickUp extends Car implements Refueling, Wiping {
+    private int loadCapacity;
+
+    + PickUp()
+    + fuel()
+    + wipWindshield()
+    + wipHeadlights()
+    + wipMirrors()
+    + getLoadCapacity(): int
+    + setLoadCapacity(int)
+}
+
+class FutureCar extends Car {
+    + FutureCar()
+    + movement()
+    - fly()
+}
+
+interface Refueling {
+    + fuel()
+}
+
+interface Wiping {
+    wipWindshield()
+    wipHeadlights()
+    wipMirrors()
+}
+
+enum BodyType{
+    Hatchback
+    Sedan
+    SUV
+    Coupe
+    Convertible
+    Wagon
+    Van
+    Jeep
+    PickUp
+}
+
+enum TypeFuel{
+    Gas
+    Diesel
+}
+
+enum TypeGearbox{
+    Manual
+    Automatic
+    Robotic
+}
+
+TypeFuel "1" <-- "1" Car
+TypeGearbox "1" <-- "1" Car
+BodyType "1" <-- "1" Car
+@enduml

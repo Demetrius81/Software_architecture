@@ -1,5 +1,5 @@
-public class FutereCar extends Car {
-    FutereCar() {
+public class FutureCar extends Car {
+    FutureCar() {
         this.setNumberWheels(3);
     }
 
