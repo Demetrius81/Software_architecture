@@ -1,11 +1,20 @@
 package Facade;
 
+/**
+ * Подсистема включения/выключения подачи газа
+ */
 public class GasSwitcher {
-    public void turnOffTheGas(){
+    /**
+     * Метод выключения подачи газа
+     */
+    public void turnOffTheGas() {
         System.out.println("Gas off.");
     }
 
-    public void turnOnTheGas(){
+    /**
+     * Метод включения подачи газа
+     */
+    public void turnOnTheGas() {
         System.out.println("Gas on.");
     }
 }

@@ -11,6 +11,9 @@ public class WaterSwitcer {
         System.out.println("Water off.");
     }
 
+    /**
+     * Метод включения воды
+     */
     public void turnOnTheWater(){
         System.out.println("Water on.");
     }

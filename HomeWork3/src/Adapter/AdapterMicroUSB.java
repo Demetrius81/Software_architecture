@@ -1,8 +1,16 @@
 package Adapter;
 
-public class AdapterMicroUSB implements IDefaultAdapter{
+/**
+ * Класс - конкретный адаптер
+ */
+public class AdapterMicroUSB implements IDefaultAdapter {
     private IMicroUsb device;
 
+    /**
+     * Конструктор класса
+     *
+     * @param device устройство для соединения (объект класса для изменения его интерфейса)
+     */
     public AdapterMicroUSB(IMicroUsb device) {
         this.device = device;
     }

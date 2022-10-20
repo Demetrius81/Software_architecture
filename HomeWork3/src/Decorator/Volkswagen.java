@@ -1,6 +1,12 @@
 package Decorator;
 
-public class Volkswagen extends Car{
+/**
+ * Класс - модель конкретного автомобиля
+ */
+public class Volkswagen extends Car {
+    /**
+     * Конструктор класса
+     */
     public Volkswagen() {
         super("Volkswagen");
     }

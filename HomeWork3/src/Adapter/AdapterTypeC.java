@@ -1,8 +1,16 @@
 package Adapter;
 
-public class AdapterTypeC implements IDefaultAdapter{
+/**
+ * Класс - конкретный адаптер
+ */
+public class AdapterTypeC implements IDefaultAdapter {
     private IUSBTypeC device;
 
+    /**
+     * Конструктор класса
+     *
+     * @param device устройство для соединения (объект класса для изменения его интерфейса)
+     */
     public AdapterTypeC(IUSBTypeC device) {
         this.device = device;
     }

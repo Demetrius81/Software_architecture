@@ -1,11 +1,20 @@
 package Facade;
 
+/**
+ * Подсистема включения/выключения подачи электроэнергии
+ */
 public class PowerSwitcher {
-    public void turnOffThePower(){
+    /**
+     * Метод выключения электропитания
+     */
+    public void turnOffThePower() {
         System.out.println("Power off.");
     }
 
-    public void turnOnThePower(){
+    /**
+     * Метод включения электропитания
+     */
+    public void turnOnThePower() {
         System.out.println("Power on.");
     }
 }

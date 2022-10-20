@@ -1,5 +1,8 @@
 package Adapter;
 
+/**
+ * Класс - модель сервисного компьютера (класс - клиент)
+ */
 public class ServiceComputer {
 
     //Создаем устройства для подключения с разными интерфейсами
@@ -16,14 +19,18 @@ public class ServiceComputer {
     private IDefaultAdapter adapter4 = new AdapterTypeC(device4);
     private IDefaultAdapter adapter5 = new AdapterTypeC(device5);
 
-    public void update(){
-        //Подключаем устройства используя адаптеры
+    /**
+     * Метод улучшения мобильных телефонов
+     */
+    public void update() {
+        //Подключаем устройства к одинаковым интерфейсам используя адаптеры
         adapter1.connectUSBA();
         adapter2.connectUSBA();
         adapter3.connectUSBA();
         adapter4.connectUSBA();
         adapter5.connectUSBA();
 
+        //Иммитация дальнейшей логики работы компьютера
         System.out.println("\nImproving connected devices.");
     }
 }

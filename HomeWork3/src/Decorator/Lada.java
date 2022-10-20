@@ -1,6 +1,12 @@
 package Decorator;
 
-public class Lada extends Car{
+/**
+ * Класс - модель конкретного автомобиля
+ */
+public class Lada extends Car {
+    /**
+     * Конструктор класса
+     */
     public Lada() {
         super("Lada");
     }

@@ -1,6 +1,14 @@
 package Decorator;
 
-public class CarWithReinforcedSuspension extends CarDecorator{
+/**
+ * Класс - конкретный декоратор. Предоставляет функционал усиленной подвески
+ */
+public class CarWithReinforcedSuspension extends CarDecorator {
+    /**
+     * Конструктор класса
+     *
+     * @param car автомобиль для добавления дополнительного функционала
+     */
     public CarWithReinforcedSuspension(Car car) {
         super(car.getName() + " with reinforced suspension", car);
     }

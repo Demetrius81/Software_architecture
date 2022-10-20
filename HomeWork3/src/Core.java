@@ -5,8 +5,13 @@ import Facade.SmartHouse;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Класс основной логики приложения
+ */
 public class Core {
-
+    /**
+     * Главный метод ядра программы с бесконечным циклом
+     */
     public void runProgram() {
         while (true) {
             //Вывод в консоль вариантов запуска
@@ -20,7 +25,8 @@ public class Core {
             System.out.print("Enter you choice > ");
             int choice = 0;
 
-            //Запрос ввести вариант запуска с валидацией некорректного ввода
+            //Запрос ввести вариант запуска с валидацией некорректного ввода.
+            //Здесь отлавливаем исключения и уведомляем пользователя.
             try {
                 choice = getChoice();
             } catch (RuntimeException ex) {
@@ -54,6 +60,12 @@ public class Core {
         }
     }
 
+    /**
+     * Метод получения и частичной валидации вариантов запуска приложения
+     *
+     * @return номер варианта
+     * @throws Exception
+     */
     private int getChoice() throws Exception {
         int num = 0;
         Scanner in = new Scanner(System.in);
@@ -67,6 +79,9 @@ public class Core {
         return num;
     }
 
+    /**
+     * Метод запуска теста паттерна Декоратор
+     */
     private void runBuyCar() {
         //Создаем экземпляры новых автомобилей
         Car car1 = new Audi();
@@ -91,6 +106,9 @@ public class Core {
         System.out.println("=========================================================================================");
     }
 
+    /**
+     * Метод запуска теста паттерна Адаптер
+     */
     private void runUpdateDevices() {
         System.out.println("Test adapter pattern.");
         System.out.println("=========================================================================================");
@@ -100,6 +118,9 @@ public class Core {
         System.out.println("=========================================================================================");
     }
 
+    /**
+     * Метод запуска теста паттерна Фасад
+     */
     private void runSmartHouse() {
         //Создаем умный дом
         SmartHouse smartHouse = new SmartHouse();

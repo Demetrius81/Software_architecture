@@ -1,6 +1,12 @@
 package Decorator;
 
-public class Audi extends Car{
+/**
+ * Класс - модель конкретного автомобиля
+ */
+public class Audi extends Car {
+    /**
+     * Конструктор класса
+     */
     public Audi() {
         super("Audi");
     }

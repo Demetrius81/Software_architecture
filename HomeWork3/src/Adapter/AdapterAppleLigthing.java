@@ -1,8 +1,16 @@
 package Adapter;
 
-public class AdapterAppleLigthing implements IDefaultAdapter{
+/**
+ * Класс - конкретный адаптер
+ */
+public class AdapterAppleLigthing implements IDefaultAdapter {
     private IAppleLightning device;
 
+    /**
+     * Конструктор класса
+     *
+     * @param device устройство для соединения (объект класса для изменения его интерфейса)
+     */
     public AdapterAppleLigthing(IAppleLightning device) {
         this.device = device;
     }

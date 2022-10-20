@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3228ee98-1638-4b71-a2ea-39c18fe86c9b" name="Changes" comment="" />
+    <list default="true" id="3228ee98-1638-4b71-a2ea-39c18fe86c9b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Adapter/AdapterAppleLigthing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Adapter/AdapterAppleLigthing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Adapter/AdapterMicroUSB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Adapter/AdapterMicroUSB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Adapter/AdapterMiniUsb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Adapter/AdapterMiniUsb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Adapter/AdapterTypeC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Adapter/AdapterTypeC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Adapter/AppleIphone9.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Adapter/AppleIphone9.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Adapter/IAppleLightning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Adapter/IAppleLightning.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Adapter/IDefaultAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Adapter/IDefaultAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Adapter/IMicroUsb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Adapter/IMicroUsb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Adapter/IMiniUSB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Adapter/IMiniUSB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Adapter/IUSBTypeC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Adapter/IUSBTypeC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Adapter/SamsungA10.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Adapter/SamsungA10.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Adapter/SamsungGalaxyS9.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Adapter/SamsungGalaxyS9.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Adapter/ServiceComputer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Adapter/ServiceComputer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Adapter/SonyEricssonZ1010.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Adapter/SonyEricssonZ1010.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Adapter/WilkoSunny5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Adapter/WilkoSunny5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Decorator/Audi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Decorator/Audi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Decorator/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Decorator/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Decorator/CarDecorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Decorator/CarDecorator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Decorator/CarSportyDesign.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Decorator/CarSportyDesign.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Decorator/CarWithAudio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Decorator/CarWithAudio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Decorator/CarWithReinforcedSuspension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Decorator/CarWithReinforcedSuspension.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Decorator/Lada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Decorator/Lada.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Decorator/Volkswagen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Decorator/Volkswagen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Facade/GasSwitcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Facade/GasSwitcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Facade/PowerSwitcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Facade/PowerSwitcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Facade/SecuritySystemSwitcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Facade/SecuritySystemSwitcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Facade/WaterSwitcer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Facade/WaterSwitcer.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
