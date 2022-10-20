@@ -1,9 +1,17 @@
+import Adapter.ServiceComputer;
 import Facade.SmartHouse;
 
 public class Main {
     public static void main(String[] args) {
-        runSmartHouse();
+        //runSmartHouse();
+        runUpdateDevices();
 
+
+    }
+
+    private  static void runUpdateDevices(){
+        ServiceComputer computer = new ServiceComputer();
+        computer.update();
     }
 
     private static void runSmartHouse(){
