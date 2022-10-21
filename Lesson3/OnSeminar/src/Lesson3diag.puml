@@ -84,7 +84,7 @@ enum TypeGearbox{
     Robotic
 }
 
-TypeFuel "1" <-- "1" Car
-TypeGearbox "1" <-- "1" Car
-BodyType "1" <-- "1" Car
+TypeFuel <-- Car
+TypeGearbox <-- Car
+BodyType <-- Car
 @enduml
