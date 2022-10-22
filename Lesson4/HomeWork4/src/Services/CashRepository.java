@@ -8,6 +8,7 @@ import java.util.List;
 public class CashRepository implements ICashRepo {
     private static CashRepository cashRepository;
 
+
     private List<BankAccount> clients;
 
     public List<BankAccount> getClients() {
@@ -31,14 +32,14 @@ public class CashRepository implements ICashRepo {
     }
 
     @Override
-    public boolean transaction(int payment, long cardFrom, long cardTo) throws RuntimeException {
+    public boolean transaction(int payment, long cardFrom, long carrierСard) throws RuntimeException {
         BankAccount from = null;
         BankAccount to = null;
         for (var client : clients){
             if(client.getCard() == cardFrom){
                 from = client;
             }
-            if(client.getCard() == cardTo){
+            if(client.getCard() == carrierСard){
                 to = client;
             }
         }
@@ -54,7 +55,6 @@ public class CashRepository implements ICashRepo {
         if(to.getBalance() > Integer.MAX_VALUE - payment){
             throw new RuntimeException("Too much amount.");
         }
-
         try{
         }finally {
             clients.remove(from);
@@ -64,6 +64,6 @@ public class CashRepository implements ICashRepo {
             clients.add(from);
             clients.add(to);
         }
-        return false;
+        return true;
     }
 }

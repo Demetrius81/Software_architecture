@@ -1,5 +1,6 @@
 package Core;
 
+import Models.Client;
 import Models.Ticket;
 
 import java.util.ArrayList;
@@ -10,13 +11,14 @@ public class Customer {
     private int id;
     private List<Ticket> tickets;
     private CashProvider cashProvider;
+    private Client client;
 
     public Customer() {
-        this.cashProvider = new CashProvider();
+        this.cashProvider = new CashProvider(client.getCardNumber());
     }
 
-    public boolean buyTicket(Ticket ticket) {
-        return true;
+    public boolean buyTicket(Ticket ticket) throws RuntimeException {
+        return cashProvider.buy(ticket);
     }
 
     public List<Ticket> searchTicket(Date date, int route) throws RuntimeException {
