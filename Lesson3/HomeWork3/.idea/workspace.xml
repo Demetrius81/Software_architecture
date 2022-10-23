@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3228ee98-1638-4b71-a2ea-39c18fe86c9b" name="Changes" comment="" />
+    <list default="true" id="3228ee98-1638-4b71-a2ea-39c18fe86c9b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/ClientApplication/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/ClientApplication/Start.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/Core/CashProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/Core/CashProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/Core/ClientProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/Core/ClientProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/Core/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/Core/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/Interfaces/ICustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/Interfaces/ICustomer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,14 +34,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/проекты/GB/Software_architecture/Lesson3/HomeWork3",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/проекты/GB/Software_architecture/Lesson3/HomeWork3&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="Adapter" />

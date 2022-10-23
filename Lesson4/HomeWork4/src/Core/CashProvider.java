@@ -1,5 +1,7 @@
 package Core;
 
+import Interfaces.ICarrierRepo;
+import Interfaces.ICashRepo;
 import Models.Carrier;
 import Models.Client;
 import Models.Ticket;
@@ -9,8 +11,8 @@ import Services.CashRepository;
 public class CashProvider {
     private long cardNumber;
     private boolean isAuthorized;
-    private CarrierRepository carrierRepository;
-    private CashRepository cashRepository;
+    private ICarrierRepo carrierRepository;
+    private ICashRepo cashRepository;
 
     public CashProvider(long cardNumber) {
         this.cardNumber = cardNumber;

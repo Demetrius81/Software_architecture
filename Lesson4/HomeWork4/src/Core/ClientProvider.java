@@ -1,12 +1,13 @@
 package Core;
 
+import Interfaces.IClientRepo;
 import Models.Client;
 import Services.ClientRepository;
 
 import java.util.List;
 
 public class ClientProvider {
-    private ClientRepository clientRepository;
+    private IClientRepo clientRepository;
 
     public ClientProvider() {
         this.clientRepository = ClientRepository.getClientRepository();

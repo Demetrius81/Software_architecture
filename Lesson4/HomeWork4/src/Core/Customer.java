@@ -13,12 +13,29 @@ public class Customer implements ICustomer {
     //private List<Ticket> tickets;
     private TicketProvider ticketProvider;
     private CashProvider cashProvider;
+    private ClientProvider clientProvider;
     private Client client;
 
     public Customer(Client client) {
         this.client = client;
         this.cashProvider = new CashProvider(client.getCardNumber());
         this.ticketProvider = new TicketProvider();
+        this.clientProvider = new ClientProvider();
+    }
+
+    @Override
+    public ClientProvider getClientProvider() {
+        return clientProvider;
+    }
+
+    @Override
+    public Client getClient() {
+        return client;
+    }
+
+    @Override
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     @Override
