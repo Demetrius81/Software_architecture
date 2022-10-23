@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3228ee98-1638-4b71-a2ea-39c18fe86c9b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/ClientApplication/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/ClientApplication/Start.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/Core/CashProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/Core/CashProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/Core/ClientProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/Core/ClientProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/Core/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/Core/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/Interfaces/ICustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/Interfaces/ICustomer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lesson4/HomeWork4/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

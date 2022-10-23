@@ -9,10 +9,8 @@ import java.util.List;
 public class Start extends EnterData {
     private ICustomer customer;
     private List<Ticket> tickets;
-    private Ticket ticket;
-
-    int ticketRouteNumber;
-    Date ticketDate;
+    private int ticketRouteNumber;
+    private Date ticketDate;
 
     public void run() {
         runLoginRegisterMenu();
@@ -104,7 +102,7 @@ public class Start extends EnterData {
                     if (ticketRouteNumber > 0) {
                         ticketDate = runSelectDate();
                         if (ticketDate != null) {
-                            tickets = customer.searchTicket(ticketDate, ticketRouteNumber);
+                            tickets = customer.searchTicket(ticketDate, ticketRouteNumber); // TODO: Implement catch!!!
                             printAllTickets(tickets);
                             buyTicketMenu();
                             return;
@@ -171,7 +169,7 @@ public class Start extends EnterData {
                     boolean flag = false;
                     try {
                         flag = customer.buyTicket(t);
-                    } catch (RuntimeException ex){
+                    } catch (RuntimeException ex) {
                         System.err.println(ex.getMessage());
                         System.out.println("====================================================================" +
                                 "=================");
