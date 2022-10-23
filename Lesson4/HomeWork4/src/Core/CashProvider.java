@@ -27,6 +27,7 @@ public class CashProvider {
     }
 
     public void authorization(Client client) {
+        //TODO: Create Authorization class and implement logic
         isAuthorized = client.getCardNumber() == cardNumber;
     }
 }

@@ -1,5 +1,6 @@
 package Services;
 
+import Interfaces.ITicketRepo;
 import Models.Ticket;
 
 import java.util.*;
@@ -33,7 +34,7 @@ public class TicketRepository implements ITicketRepo {
     public List<Ticket> readAll(int routeNumber) throws RuntimeException {
         List<Ticket> routeTickets = new ArrayList<>();
         for (Ticket ticket : tickets){
-            if(ticket.getRouteNumber() == routeNumber){
+            if(ticket.getRouteNumber() == routeNumber && ticket.getValid() == true){
                 routeTickets.add(ticket);
             }
         }
@@ -45,17 +46,14 @@ public class TicketRepository implements ITicketRepo {
 
     @Override
     public boolean update(Ticket ticket) {
-        int n = 0;
         for (Ticket tick : tickets) {
             if (tick.equals(ticket)) {
-                n = tickets.indexOf(tick);
-                break;
+                tickets.remove(tick);
+                tickets.add(ticket);
+                return true;
             }
-            return false;
         }
-        tickets.remove(n);
-        tickets.add(ticket);
-        return true;
+        return false;
     }
 
     @Override

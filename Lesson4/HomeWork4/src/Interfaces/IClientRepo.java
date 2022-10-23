@@ -1,9 +1,12 @@
-package Services;
+package Interfaces;
 
 import Models.Client;
 
 import java.util.List;
 
+/**
+ * Интерфейс взаимодействия с базой клиентов
+ */
 public interface IClientRepo {
     int create(Client client);
     Client read(int id);

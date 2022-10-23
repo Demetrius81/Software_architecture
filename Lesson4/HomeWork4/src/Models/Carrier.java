@@ -2,7 +2,6 @@ package Models;
 
 public class Carrier {
     private int id;
-
     private long cardNumber;
 
     public Carrier(int id, long cardNumber) {

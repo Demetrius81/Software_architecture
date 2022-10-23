@@ -1,5 +1,6 @@
 package Services;
 
+import Interfaces.IClientRepo;
 import Models.Client;
 
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
 package Core;
 
 import Models.Ticket;
-import Services.ITicketRepo;
+import Interfaces.ITicketRepo;
 import Services.TicketRepository;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public class TicketProvider {
     }
 
     public boolean updateTicketStatus(Ticket ticket){
-        boolean result = ticketRepo.update(ticket);
-        return result;
+        ticket.setValid(false);
+        return ticketRepo.update(ticket);
     }
 }
