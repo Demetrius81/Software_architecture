@@ -1,5 +1,6 @@
 package ClientApplication;
 
+import Core.Customer;
 import Interfaces.ICustomer;
 import Models.Ticket;
 
@@ -16,6 +17,9 @@ public class Start extends EnterData {
         runLoginRegisterMenu();
     }
 
+    public Start() {
+        this.customer = new Customer();
+    }
 
     private void runLoginRegisterMenu() {
         while (true) {
@@ -163,9 +167,9 @@ public class Start extends EnterData {
                 " \"Yes\" > ");
         String answer = inputString();
         System.out.println("=====================================================================================");
-        if (answer.toUpperCase() == "YES") {
+        if (answer.equalsIgnoreCase("YES")) {
             for (var t : tickets) {
-                if (t.getDate() == ticketDate && t.getRouteNumber() == ticketRouteNumber && t.getValid()) {
+                if (t.getDate().equals(ticketDate) && t.getRouteNumber() == ticketRouteNumber && t.getValid()) {
                     boolean flag = false;
                     try {
                         flag = customer.buyTicket(t);

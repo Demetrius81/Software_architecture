@@ -50,7 +50,8 @@ public class ClientRepository implements IClientRepo {
     @Override
     public Client read(String userName) throws RuntimeException {
         for (var client : clients) {
-            if (client.getUserName() == userName) {
+            var clientName = client.getUserName();
+            if (clientName.equals(userName)) {
                 return client;
             }
         }

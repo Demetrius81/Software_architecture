@@ -1,0 +1,128 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Customer implements ICustomer {
+    - TicketProvider ticketProvider
+    - CashProvider cashProvider
+    - ClientProvider clientProvider
+    - Client client
+
+    + Customer(Client)
+    + getClientProvider(): ClientProvider
+    + getClient(): Client
+    + setClient(Client)
+    + buyTicket(Ticket): boolean
+    + searchTicket(Date, int): Ticket[]
+}
+
+class TicketProvider {
+    - ITicketRepo ticketRepo
+
+    + TicketProvider()
+    + getTickets(int routeNumber): Ticket[]
+    + updateTicketStatus(Ticket ticket): boolean
+}
+
+class ClientProvider {
+    - IClientRepo clientRepository
+
+    + ClientProvider()
+    + createClient(int, String, int, long): int
+    + getClientByName(String): Client
+    + getAllClients(): Client[]
+}
+
+class CashProvider {
+    - long cardNumber
+    - boolean isAuthorized
+    - ICarrierRepo carrierRepository
+    - ICashRepo cashRepository
+
+    + CashProvider(long)
+    + buy(Ticket): boolean
+    + authorization(Client)
+}
+
+class Client {
+    - int id
+    - String userName
+    - int hashPassword
+    - long cardNumber
+
+    + Client(int, String, int, long)
+    + getId(): int
+    + getUserName(): String
+    + getHashPassword(): int
+    + getCardNumber(): long
+    + toString(): String
+    + equals(Object): boolean
+    + equals(Client): boolean
+    + hashCode(): int
+}
+
+class Ticket {
+    - int routeNumber
+    - int place
+    - int price
+    - Date date
+    - boolean isValid
+
+    + Ticket(int, int, int, Date, boolean)
+    + getRouteNumber(): int
+    + getPlace(): int
+    + getPrice(): int
+    + getDate(): Date
+    + getValid(); boolean
+    + setValid(boolean)
+    + toString(): String
+    + toPrint(): String
+    + hashCode(): int
+    + equals(Object): boolean
+    + equals(Ticket): boolean
+}
+
+interface ICustomer {
+    getClient(): Client
+    setClient(Client)
+    getClientProvider(): ClientProvider
+    buyTicket(Ticket): boolean
+    searchTicket(Date, int): Ticket
+}
+
+interface ICarrierRepo {
+     read(int): Carrier
+}
+
+interface ICashRepo {
+    transaction(int, long, long): boolean
+}
+
+interface IClientRepo {
+    create(Client): int
+    read(int): Client
+    read(String): Client
+    readAll(): Client[]
+    update(Client): boolean
+    delete(Client): boolean
+}
+
+interface ITicketRepo {
+    create(Ticket): boolean
+    readAll(int): Ticket[]
+    update(Ticket): boolean
+    delete(Ticket): boolean
+}
+
+
+Customer *-- TicketProvider
+Customer *-- CashProvider
+Customer *-- ClientProvider
+Customer o-- Client
+Customer <-- Ticket
+
+TicketProvider o-- ITicketRepo
+CashProvider o-- ICashRepo
+CashProvider o-- ICarrierRepo
+ClientProvider o-- IClientRepo
+
+@enduml

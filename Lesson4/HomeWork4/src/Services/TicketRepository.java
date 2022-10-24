@@ -3,6 +3,7 @@ package Services;
 import Interfaces.ITicketRepo;
 import Models.Ticket;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class TicketRepository implements ITicketRepo {
@@ -12,8 +13,16 @@ public class TicketRepository implements ITicketRepo {
     private TicketRepository() {
         //здесь симуляция работы с БД
         tickets = new ArrayList<>();
-        generateTickets(1, 6, 10, new Date());
-        generateTickets(2, 4, 15, new Date());
+        String strDate = "2022-10-27";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date;
+        try {
+            date = sdf.parse(strDate);
+        } catch (Exception ex) {
+            date = null;
+        }
+        generateTickets(1, 6, 10, date);
+        generateTickets(2, 4, 15, date);
     }
 
     public static TicketRepository getTicketRepository() {
@@ -33,12 +42,12 @@ public class TicketRepository implements ITicketRepo {
     @Override
     public List<Ticket> readAll(int routeNumber) throws RuntimeException {
         List<Ticket> routeTickets = new ArrayList<>();
-        for (Ticket ticket : tickets){
-            if(ticket.getRouteNumber() == routeNumber && ticket.getValid() == true){
+        for (Ticket ticket : tickets) {
+            if (ticket.getRouteNumber() == routeNumber && ticket.getValid() == true) {
                 routeTickets.add(ticket);
             }
         }
-        if (routeTickets.isEmpty()){
+        if (routeTickets.isEmpty()) {
             throw new RuntimeException("There are no tickets for this bus.");
         }
         return tickets;

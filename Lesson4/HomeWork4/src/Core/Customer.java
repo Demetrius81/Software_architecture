@@ -16,9 +16,8 @@ public class Customer implements ICustomer {
     private ClientProvider clientProvider;
     private Client client;
 
-    public Customer(Client client) {
-        this.client = client;
-        this.cashProvider = new CashProvider(client.getCardNumber());
+    public Customer() {
+        this.cashProvider = new CashProvider();
         this.ticketProvider = new TicketProvider();
         this.clientProvider = new ClientProvider();
     }
@@ -39,7 +38,7 @@ public class Customer implements ICustomer {
     }
 
     @Override
-    public boolean buyTicket(Ticket ticket) throws RuntimeException {
+    public boolean buyTicket(Ticket ticket) throws RuntimeException {  //TODO: add client as parameter
         boolean flag;
         flag = cashProvider.buy(ticket);
         if (flag) {
@@ -53,7 +52,7 @@ public class Customer implements ICustomer {
         List<Ticket> result = new ArrayList<>();
         var list = ticketProvider.getTickets(route);
         for (Ticket ticket : list) {
-            if (ticket.getDate() == date) {
+            if (ticket.getDate().equals(date)) {
                 result.add(ticket);
             }
         }
