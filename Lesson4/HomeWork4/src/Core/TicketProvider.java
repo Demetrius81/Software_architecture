@@ -1,6 +1,6 @@
 package Core;
 
-import Models.Ticket;
+import Interfaces.ITicket;
 import Interfaces.ITicketRepo;
 import Services.TicketRepository;
 
@@ -13,11 +13,11 @@ public class TicketProvider {
         this.ticketRepo = TicketRepository.getTicketRepository();
     }
 
-    public List<Ticket> getTickets(int routeNumber) throws RuntimeException {
+    public List<ITicket> getTickets(int routeNumber) throws RuntimeException {
         return ticketRepo.readAll(routeNumber);
     }
 
-    public boolean updateTicketStatus(Ticket ticket){
+    public boolean updateTicketStatus(ITicket ticket){
         ticket.setValid(false);
         return ticketRepo.update(ticket);
     }

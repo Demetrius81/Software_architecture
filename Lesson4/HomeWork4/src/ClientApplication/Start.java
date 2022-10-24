@@ -2,23 +2,23 @@ package ClientApplication;
 
 import Core.Customer;
 import Interfaces.ICustomer;
-import Models.Ticket;
+import Interfaces.ITicket;
 
+import java.awt.*;
 import java.util.Date;
 import java.util.List;
 
 public class Start extends EnterData {
-    private ICustomer customer;
-    private List<Ticket> tickets;
+    private final ICustomer customer;
     private int ticketRouteNumber;
     private Date ticketDate;
 
-    public void run() {
-        runLoginRegisterMenu();
-    }
-
     public Start() {
         this.customer = new Customer();
+    }
+
+    public void run() {
+        runLoginRegisterMenu();
     }
 
     private void runLoginRegisterMenu() {
@@ -27,7 +27,7 @@ public class Start extends EnterData {
             System.out.println("=====================================================================================");
             System.out.println("To login\t\t\tenter 1");
             System.out.println("To register\t\t\tenter 2");
-            System.out.println("To exit\t\t\tenter 0");
+            System.out.println("To exit\t\t\t\tenter 0");
             System.out.println("=====================================================================================");
             System.out.print("Enter your choice > ");
             int choice = 0;
@@ -43,7 +43,7 @@ public class Start extends EnterData {
             switch (choice) {
                 case 1:
                     login();
-                    if (customer.getClient() == null) {
+                    if (customer.getUser() == null) {
                         break;
                     } else {
                         runBuyingMenu();
@@ -68,8 +68,9 @@ public class Start extends EnterData {
         System.out.println("=====================================================================================");
         System.out.print("Enter the system... ");
         try {
-            customer.setClient(Authentication.authentication(customer.getClientProvider(), userName, passwordHash));
+            customer.setUser(Authentication.authentication(customer.getUserProvider(), userName, passwordHash));
         } catch (RuntimeException ex) {
+            System.out.println("FAIL");
             System.out.println(ex.getMessage());
             System.out.println("=====================================================================================");
             return;
@@ -79,15 +80,15 @@ public class Start extends EnterData {
     }
 
     private void register() {
-
+        //TODO: Implement register logic
     }
 
     private void runBuyingMenu() {
         while (true) {
-            System.out.println("Application for buying bus tickets. | User " + customer.getClient().getUserName() + " |");
+            System.out.println("Application for buying bus tickets. | User " + customer.getUser().getUserName() + " |");
             System.out.println("=====================================================================================");
             System.out.println("To select route number and print all tickets\tenter 1");
-            System.out.println("To exit\t\t\tenter 0");
+            System.out.println("To exit\t\t\t\t\t\t\t\t\t\t\tenter 0");
             System.out.println("=====================================================================================");
             System.out.print("Enter your choice > ");
             int choice = 0;
@@ -95,7 +96,7 @@ public class Start extends EnterData {
             try {
                 choice = inputInt(0, 1);
             } catch (RuntimeException ex) {
-                System.err.println(ex.getMessage());
+                System.out.println(ex.getMessage());
                 continue;
             }
             System.out.println("=====================================================================================");
@@ -106,10 +107,18 @@ public class Start extends EnterData {
                     if (ticketRouteNumber > 0) {
                         ticketDate = runSelectDate();
                         if (ticketDate != null) {
-                            tickets = customer.searchTicket(ticketDate, ticketRouteNumber); // TODO: Implement catch!!!
-                            printAllTickets(tickets);
+                            try {
+                                customer.setSelectedTickets(customer.searchTicket(ticketDate, ticketRouteNumber));
+                            } catch (RuntimeException ex){
+                                System.err.println(ex.getMessage());
+                                System.out.println("=============================================================" +
+                                        "========================");
+                                continue;
+                            }
+                            printAllTickets(customer.getSelectedTickets());
                             buyTicketMenu();
-                            return;
+                            continue;
+                            //return;
                         }
                         continue;
                     }
@@ -121,7 +130,7 @@ public class Start extends EnterData {
     }
 
     private int runSelectRouteMenu() {
-        System.out.println("Input route number and date. | User " + customer.getClient().getUserName() + " |");
+        System.out.println("Input route number and date. | User " + customer.getUser().getUserName() + " |");
         System.out.println("=====================================================================================");
         System.out.print("Route number > ");
         //Здесь ограничиваем число маршрутов. У на всего 2 маршрута.
@@ -129,7 +138,7 @@ public class Start extends EnterData {
         try {
             numRoute = inputInt(1, 2);
         } catch (RuntimeException ex) {
-            System.err.println(ex.getMessage());
+            System.out.println(ex.getMessage());
             System.out.println("=====================================================================================");
             return -1;
         }
@@ -144,7 +153,7 @@ public class Start extends EnterData {
         try {
             date = inputDate();
         } catch (RuntimeException ex) {
-            System.err.println(ex.getMessage());
+            System.out.println(ex.getMessage());
             System.out.println("=====================================================================================");
             return null;
         }
@@ -152,7 +161,7 @@ public class Start extends EnterData {
         return date;
     }
 
-    private void printAllTickets(List<Ticket> ticks) {
+    private void printAllTickets(List<ITicket> ticks) {
         for (var t : ticks) {
             System.out.println(t.toString());
         }
@@ -161,20 +170,20 @@ public class Start extends EnterData {
 
 
     private void buyTicketMenu() {
-        System.out.println("Confirm to buy. | User " + customer.getClient().getUserName() + " |");
+        System.out.println("Confirm to buy. | User " + customer.getUser().getUserName() + " |");
         System.out.println("=====================================================================================");
         System.out.print("To buy a ticket for bus route " + ticketRouteNumber + " on the " + ticketDate + " enter" +
                 " \"Yes\" > ");
         String answer = inputString();
         System.out.println("=====================================================================================");
         if (answer.equalsIgnoreCase("YES")) {
-            for (var t : tickets) {
+            for (var t : customer.getSelectedTickets()) {
                 if (t.getDate().equals(ticketDate) && t.getRouteNumber() == ticketRouteNumber && t.getValid()) {
                     boolean flag = false;
                     try {
                         flag = customer.buyTicket(t);
                     } catch (RuntimeException ex) {
-                        System.err.println(ex.getMessage());
+                        System.out.println(ex.getMessage());
                         System.out.println("====================================================================" +
                                 "=================");
                         return;

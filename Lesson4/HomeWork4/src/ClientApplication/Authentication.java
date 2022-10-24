@@ -1,12 +1,12 @@
 package ClientApplication;
 
-import Core.ClientProvider;
-import Models.Client;
+import Core.UserProvider;
+import Interfaces.IUser;
 
 public class Authentication {
 
-    public static Client authentication(ClientProvider clientProvider, String login, int passHash){
-        var client = clientProvider.getClientByName(login);
+    public static IUser authentication(UserProvider userProvider, String login, int passHash){
+        var client = userProvider.getClientByName(login);
         if(client.getHashPassword() == passHash){
             return client;
         }else {

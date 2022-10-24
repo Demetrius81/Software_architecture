@@ -1,5 +1,6 @@
 package Services;
 
+import Interfaces.ITicket;
 import Interfaces.ITicketRepo;
 import Models.Ticket;
 
@@ -8,7 +9,7 @@ import java.util.*;
 
 public class TicketRepository implements ITicketRepo {
     private static TicketRepository ticketRepository;
-    private List<Ticket> tickets;
+    private List<ITicket> tickets;
 
     private TicketRepository() {
         //здесь симуляция работы с БД
@@ -33,16 +34,16 @@ public class TicketRepository implements ITicketRepo {
     }
 
     @Override
-    public boolean create(Ticket ticket) {
+    public boolean create(ITicket ticket) {
         //функционал не используется
-        tickets.add(ticket);
+        tickets.add((Ticket)ticket);
         return true;
     }
 
     @Override
-    public List<Ticket> readAll(int routeNumber) throws RuntimeException {
-        List<Ticket> routeTickets = new ArrayList<>();
-        for (Ticket ticket : tickets) {
+    public List<ITicket> readAll(int routeNumber) throws RuntimeException {
+        List<ITicket> routeTickets = new ArrayList<>();
+        for (ITicket ticket : tickets) {
             if (ticket.getRouteNumber() == routeNumber && ticket.getValid() == true) {
                 routeTickets.add(ticket);
             }
@@ -54,11 +55,11 @@ public class TicketRepository implements ITicketRepo {
     }
 
     @Override
-    public boolean update(Ticket ticket) {
-        for (Ticket tick : tickets) {
+    public boolean update(ITicket ticket) {
+        for (ITicket tick : tickets) {
             if (tick.equals(ticket)) {
                 tickets.remove(tick);
-                tickets.add(ticket);
+                tickets.add((Ticket)ticket);
                 return true;
             }
         }
@@ -66,7 +67,7 @@ public class TicketRepository implements ITicketRepo {
     }
 
     @Override
-    public boolean delete(Ticket ticket) {
+    public boolean delete(ITicket ticket) {
         //функционал не используется
         if (tickets.contains(ticket)) {
             tickets.remove(ticket);

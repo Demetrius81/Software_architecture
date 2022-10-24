@@ -1,32 +1,38 @@
 package Models;
 
+import Interfaces.IUser;
+
 import java.util.Objects;
 
-public class Client {
+public class User implements IUser {
     private int id;
     private String userName;
     private int hashPassword;
     private long cardNumber;
 
-    public Client(int id, String userName, int hashPassword, long cardNumber) {
+    public User(int id, String userName, int hashPassword, long cardNumber) {
         this.id = id;
         this.userName = userName;
         this.hashPassword = hashPassword;
         this.cardNumber = cardNumber;
     }
 
+    @Override
     public int getId() {
         return id;
     }
 
+    @Override
     public String getUserName() {
         return userName;
     }
 
+    @Override
     public int getHashPassword() {
         return hashPassword;
     }
 
+    @Override
     public long getCardNumber() {
         return cardNumber;
     }
@@ -43,11 +49,12 @@ public class Client {
     @Override
     public boolean equals(Object o) {
         if (o == null || this.getClass() != o.getClass()) return false;
-        Client client = (Client) o;
+        User client = (User) o;
         return this.equals(client);
     }
 
-    public boolean equals(Client client) {
+    @Override
+    public boolean equals(User client) {
         return id == client.id && hashPassword == client.hashPassword && cardNumber == client.cardNumber && userName.equals(client.userName);
     }
 

@@ -2,34 +2,33 @@ package Core;
 
 import Interfaces.ICarrierRepo;
 import Interfaces.ICashRepo;
+import Interfaces.IUser;
+import Interfaces.ITicket;
 import Models.Carrier;
-import Models.Client;
-import Models.Ticket;
 import Services.CarrierRepository;
 import Services.CashRepository;
 
 public class CashProvider {
-    private long cardNumber;//TODO: implement setter
-    private boolean isAuthorized = true; //TODO: implement authorization logic!!!!!
+    private long cardNumber;
+    private boolean isAuthorized = false;
     private ICarrierRepo carrierRepository;
     private ICashRepo cashRepository;
 
     public CashProvider() {
-        //this.cardNumber = cardNumber;
         this.carrierRepository = CarrierRepository.getCarrierRepository();
         this.cashRepository = CashRepository.getCashRepository();
     }
 
-    public boolean buy(Ticket ticket) throws RuntimeException {
+    public boolean buy(ITicket ticket) throws RuntimeException {
         if (isAuthorized) {
             Carrier carrier = carrierRepository.read(1);
-            return cashRepository.transaction(ticket.getPrice(), cardNumber, carrier.getCardNumber());//TODO: insert the client card number
+            return cashRepository.transaction(ticket.getPrice(), cardNumber, carrier.getCardNumber());
         }
         return false;
     }
 
-    public void authorization(Client client) {
-        //TODO: Create Authorization class and implement logic
-        isAuthorized = client.getCardNumber() == cardNumber;
+    public void authorization(IUser client) {
+        cardNumber = client.getCardNumber();
+        isAuthorized = true;
     }
 }

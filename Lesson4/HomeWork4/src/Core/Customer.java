@@ -1,7 +1,8 @@
 package Core;
 
+import Interfaces.IUser;
 import Interfaces.ICustomer;
-import Models.Client;
+import Interfaces.ITicket;
 import Models.Ticket;
 
 import java.util.ArrayList;
@@ -9,37 +10,47 @@ import java.util.Date;
 import java.util.List;
 
 public class Customer implements ICustomer {
-    //private int id;
-    //private List<Ticket> tickets;
     private TicketProvider ticketProvider;
     private CashProvider cashProvider;
-    private ClientProvider clientProvider;
-    private Client client;
+    private UserProvider userProvider;
+    private IUser client;
+    private List<ITicket> selectedTickets;
 
     public Customer() {
         this.cashProvider = new CashProvider();
         this.ticketProvider = new TicketProvider();
-        this.clientProvider = new ClientProvider();
+        this.userProvider = new UserProvider();
     }
 
     @Override
-    public ClientProvider getClientProvider() {
-        return clientProvider;
+    public List<ITicket> getSelectedTickets() {
+        return selectedTickets;
     }
 
     @Override
-    public Client getClient() {
+    public void setSelectedTickets(List<ITicket> selectedTickets) {
+        this.selectedTickets = selectedTickets;
+    }
+
+    @Override
+    public UserProvider getUserProvider() {
+        return userProvider;
+    }
+
+    @Override
+    public IUser getUser() {
         return client;
     }
 
     @Override
-    public void setClient(Client client) {
+    public void setUser(IUser client) {
         this.client = client;
     }
 
     @Override
-    public boolean buyTicket(Ticket ticket) throws RuntimeException {  //TODO: add client as parameter
+    public boolean buyTicket(ITicket ticket) throws RuntimeException {
         boolean flag;
+        cashProvider.authorization(client);
         flag = cashProvider.buy(ticket);
         if (flag) {
             flag = ticketProvider.updateTicketStatus(ticket);
@@ -48,12 +59,12 @@ public class Customer implements ICustomer {
     }
 
     @Override
-    public List<Ticket> searchTicket(Date date, int route) throws RuntimeException {
-        List<Ticket> result = new ArrayList<>();
+    public List<ITicket> searchTicket(Date date, int route) throws RuntimeException {
+        List<ITicket> result = new ArrayList<>();
         var list = ticketProvider.getTickets(route);
-        for (Ticket ticket : list) {
+        for (ITicket ticket : list) {
             if (ticket.getDate().equals(date)) {
-                result.add(ticket);
+                result.add((Ticket)ticket);
             }
         }
         if (result.isEmpty()) {

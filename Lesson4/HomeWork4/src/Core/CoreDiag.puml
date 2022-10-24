@@ -4,32 +4,35 @@
 class Customer implements ICustomer {
     - TicketProvider ticketProvider
     - CashProvider cashProvider
-    - ClientProvider clientProvider
-    - Client client
+    - UserProvider clientProvider
+    - IUser client
+    - ITicket[] selectedTickets
 
-    + Customer(Client)
-    + getClientProvider(): ClientProvider
-    + getClient(): Client
-    + setClient(Client)
-    + buyTicket(Ticket): boolean
-    + searchTicket(Date, int): Ticket[]
+    + Customer(IClient)
+    + getSelectedTickets(): ITicket[]
+    + setSelectedTickets(ITicket[])
+    + getClientProvider(): UserProvider
+    + getClient(): IUser
+    + setClient(IClient)
+    + buyTicket(ITicket): boolean
+    + searchTicket(Date, int): ITicket[]
 }
 
 class TicketProvider {
     - ITicketRepo ticketRepo
 
     + TicketProvider()
-    + getTickets(int routeNumber): Ticket[]
-    + updateTicketStatus(Ticket ticket): boolean
+    + getTickets(int): ITicket[]
+    + updateTicketStatus(ITicket): boolean
 }
 
-class ClientProvider {
-    - IClientRepo clientRepository
+class UserProvider {
+    - IUserRepo clientRepository
 
-    + ClientProvider()
+    + UserProvider()
     + createClient(int, String, int, long): int
-    + getClientByName(String): Client
-    + getAllClients(): Client[]
+    + getClientByName(String): IUser
+    + getAllClients(): IUser[]
 }
 
 class CashProvider {
@@ -39,17 +42,16 @@ class CashProvider {
     - ICashRepo cashRepository
 
     + CashProvider(long)
-    + buy(Ticket): boolean
-    + authorization(Client)
+    + buy(ITicket): boolean
+    + authorization(IClient)
 }
 
-class Client {
+interface IUser {
     - int id
     - String userName
     - int hashPassword
     - long cardNumber
 
-    + Client(int, String, int, long)
     + getId(): int
     + getUserName(): String
     + getHashPassword(): int
@@ -60,7 +62,7 @@ class Client {
     + hashCode(): int
 }
 
-class Ticket {
+interface ITicket {
     - int routeNumber
     - int place
     - int price
@@ -82,11 +84,11 @@ class Ticket {
 }
 
 interface ICustomer {
-    getClient(): Client
-    setClient(Client)
-    getClientProvider(): ClientProvider
-    buyTicket(Ticket): boolean
-    searchTicket(Date, int): Ticket
+    getClient(): IUser
+    setClient(IClient)
+    getClientProvider(): UserProvider
+    buyTicket(ITicket): boolean
+    searchTicket(Date, int): ITicket
 }
 
 interface ICarrierRepo {
@@ -97,32 +99,32 @@ interface ICashRepo {
     transaction(int, long, long): boolean
 }
 
-interface IClientRepo {
-    create(Client): int
-    read(int): Client
-    read(String): Client
-    readAll(): Client[]
-    update(Client): boolean
-    delete(Client): boolean
+interface IUserRepo {
+    create(IClient): int
+    read(int): IUser
+    read(String): IUser
+    readAll(): IUser[]
+    update(IClient): boolean
+    delete(IClient): boolean
 }
 
 interface ITicketRepo {
-    create(Ticket): boolean
+    create(ITicket): boolean
     readAll(int): Ticket[]
-    update(Ticket): boolean
-    delete(Ticket): boolean
+    update(ITicket): boolean
+    delete(ITicket): boolean
 }
 
 
-Customer *-- TicketProvider
-Customer *-- CashProvider
-Customer *-- ClientProvider
-Customer o-- Client
-Customer <-- Ticket
+Customer --* TicketProvider
+Customer --* CashProvider
+Customer --* UserProvider
+Customer --> IUser
+Customer "1" --> "1..*" ITicket
 
-TicketProvider o-- ITicketRepo
-CashProvider o-- ICashRepo
-CashProvider o-- ICarrierRepo
-ClientProvider o-- IClientRepo
+TicketProvider --o ITicketRepo
+CashProvider --o ICashRepo
+CashProvider --o ICarrierRepo
+UserProvider --o IUserRepo
 
 @enduml
