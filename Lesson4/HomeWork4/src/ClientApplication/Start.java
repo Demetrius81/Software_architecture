@@ -96,7 +96,11 @@ public class Start extends EnterData {
             try {
                 choice = inputInt(0, 1);
             } catch (RuntimeException ex) {
+                System.out.println("==============================================================================" +
+                        "=======");
                 System.out.println(ex.getMessage());
+                System.out.println("==============================================================================" +
+                        "=======");
                 continue;
             }
             System.out.println("=====================================================================================");
