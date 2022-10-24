@@ -8,13 +8,9 @@ import java.util.Date;
 import java.util.List;
 
 public class Start extends EnterData {
-    private final ICustomer customer;
+    private ICustomer customer;
     private int ticketRouteNumber;
     private Date ticketDate;
-
-    public Start() {
-        this.customer = new Customer();
-    }
 
     public void run() {
         runLoginRegisterMenu();
@@ -46,7 +42,7 @@ public class Start extends EnterData {
                         break;
                     } else {
                         runBuyingMenu();
-                        return;
+                        break;
                     }
                 case 2:
                     register();
@@ -66,6 +62,7 @@ public class Start extends EnterData {
         int passwordHash = inputString().hashCode();
         System.out.println("=====================================================================================");
         System.out.print("Enter the system... ");
+        customer = new Customer();
         try {
             customer.setUser(Authentication.authentication(customer.getUserProvider(), userName, passwordHash));
         } catch (RuntimeException ex) {
@@ -85,11 +82,12 @@ public class Start extends EnterData {
     }
 
     private void runBuyingMenu() {
-        while (true) {
+        boolean run = true;
+        while (run) {
             System.out.println("Application for buying bus tickets. | User " + customer.getUser().getUserName() + " |");
             System.out.println("=====================================================================================");
             System.out.println("To select route number and print all tickets\tenter 1");
-            System.out.println("To exit\t\t\t\t\t\t\t\t\t\t\tenter 0");
+            System.out.println("To logout\t\t\t\t\t\t\t\t\t\tenter 0");
             System.out.println("=====================================================================================");
             System.out.print("Enter your choice > ");
             int choice = 0;
@@ -129,7 +127,8 @@ public class Start extends EnterData {
                     }
                     continue;
                 default:
-                    return;
+                    run = false;
+                    break;
             }
         }
     }

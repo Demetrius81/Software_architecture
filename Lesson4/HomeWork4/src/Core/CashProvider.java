@@ -28,6 +28,7 @@ public class CashProvider {
     }
 
     public void authorization(IUser client) {
+        //Здесь должна быть реализована сверка аккаунта приложения и банковского аккаунта.
         cardNumber = client.getCardNumber();
         isAuthorized = true;
     }
