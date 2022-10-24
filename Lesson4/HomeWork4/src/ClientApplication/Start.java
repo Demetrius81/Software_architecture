@@ -4,7 +4,6 @@ import Core.Customer;
 import Interfaces.ICustomer;
 import Interfaces.ITicket;
 
-import java.awt.*;
 import java.util.Date;
 import java.util.List;
 
@@ -80,6 +79,8 @@ public class Start extends EnterData {
     }
 
     private void register() {
+        System.out.println("This is a test version. This functionality is not available.");
+        System.out.println("=====================================================================================");
         //TODO: Implement register logic
     }
 
