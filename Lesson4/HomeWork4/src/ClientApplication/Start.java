@@ -2,22 +2,26 @@ package ClientApplication;
 
 import Core.Customer;
 import Interfaces.ICustomer;
-import Interfaces.ITicket;
+import Models.Ticket;
 
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Основной класс клиентского приложения.
+ */
 public class Start extends EnterData {
+    // Связь с основной логикой осуществляется через интерфейс ICustomer.
     private ICustomer customer;
     private int ticketRouteNumber;
     private Date ticketDate;
 
-    public void run() {
-        runLoginRegisterMenu();
-    }
-
-    private void runLoginRegisterMenu() {
-        while (true) {
+    /**
+     * Метод запуска меню входа и регистрации
+     */
+    public void runLoginRegisterMenu() {
+        boolean run = true;
+        while (run) {
             System.out.println("Application for buying bus tickets");
             System.out.println("=====================================================================================");
             System.out.println("This is a test version. The data base is not available in full mode.");
@@ -28,7 +32,6 @@ public class Start extends EnterData {
             System.out.println("=====================================================================================");
             System.out.print("Enter your choice > ");
             int choice = 0;
-
             try {
                 choice = inputInt(0, 2);
             } catch (RuntimeException ex) {
@@ -36,30 +39,43 @@ public class Start extends EnterData {
                 continue;
             }
             System.out.println("=====================================================================================");
-
-            switch (choice) {
-                case 1:
-                    login();
-                    if (customer.getUser() == null) {
-                        break;
-                    } else {
-                        runBuyingMenu();
-                        break;
-                    }
-                case 2:
-                    register();
-                    if (customer == null) {
-                        break;
-                    } else {
-                        runBuyingMenu();
-                        break;
-                    }
-                default:
-                    return;
-            }
+            run = runLoginRegisterMenuChoiceLogic(choice);
         }
     }
 
+    /**
+     * Логика ветвления запуска программы
+     *
+     * @param choice
+     * @return
+     */
+    private boolean runLoginRegisterMenuChoiceLogic(int choice) {
+        switch (choice) {
+            case 1:
+                login();
+                if (customer.getUser() == null) {
+                    break;
+                } else {
+                    runBuyingMenu();
+                    break;
+                }
+            case 2:
+                register();
+                if (customer == null) {
+                    break;
+                } else {
+                    runBuyingMenu();
+                    break;
+                }
+            default:
+                return false;
+        }
+        return true;
+    }
+
+    /**
+     * Меню входа зарегестрированного пользователя
+     */
     private void login() {
         System.out.println("This is a test version. The data base is not available in full mode.");
         System.out.println("=====================================================================================");
@@ -84,6 +100,9 @@ public class Start extends EnterData {
         System.out.println("=====================================================================================");
     }
 
+    /**
+     * Меню регистрации нового пользователя
+     */
     private void register() {
         System.out.println("This is a test version. The data base is not available in full mode.");
         System.out.println("=====================================================================================");
@@ -95,7 +114,7 @@ public class Start extends EnterData {
         int passwordHash = inputString().hashCode();
         System.out.print("Repeat password: ");
         int passwordHash2 = inputString().hashCode();
-        if(passwordHash != passwordHash2){
+        if (passwordHash != passwordHash2) {
             System.out.println("=====================================================================================");
             System.out.println("Passwords do not match. Exit register.");
             System.out.println("=====================================================================================");
@@ -120,6 +139,9 @@ public class Start extends EnterData {
         System.out.println("=====================================================================================");
     }
 
+    /**
+     * Меню покупки билетов
+     */
     private void runBuyingMenu() {
         boolean run = true;
         while (run) {
@@ -130,7 +152,6 @@ public class Start extends EnterData {
             System.out.println("=====================================================================================");
             System.out.print("Enter your choice > ");
             int choice = 0;
-
             try {
                 choice = inputInt(0, 1);
             } catch (RuntimeException ex) {
@@ -142,36 +163,49 @@ public class Start extends EnterData {
                 continue;
             }
             System.out.println("=====================================================================================");
-
-            switch (choice) {
-                case 1:
-                    ticketRouteNumber = runSelectRouteMenu();
-                    if (ticketRouteNumber > 0) {
-                        ticketDate = runSelectDate();
-                        if (ticketDate != null) {
-                            try {
-                                customer.setSelectedTickets(customer.searchTicket(ticketDate, ticketRouteNumber));
-                            } catch (RuntimeException ex){
-                                System.err.println(ex.getMessage());
-                                System.out.println("=============================================================" +
-                                        "========================");
-                                continue;
-                            }
-                            printAllTickets(customer.getSelectedTickets());
-                            buyTicketMenu();
-                            continue;
-                            //return;
-                        }
-                        continue;
-                    }
-                    continue;
-                default:
-                    run = false;
-                    break;
-            }
+            run = runBuyingMenuChoiceLogic(choice);
         }
     }
 
+    /**
+     * Логика ветвления меню покупки билетов
+     *
+     * @param choice
+     * @return
+     */
+    private boolean runBuyingMenuChoiceLogic(int choice) {
+        switch (choice) {
+            case 1:
+                ticketRouteNumber = runSelectRouteMenu();
+                if (ticketRouteNumber > 0) {
+                    ticketDate = runSelectDate();
+                    if (ticketDate != null) {
+                        try {
+                            customer.setSelectedTickets(customer.searchTicket(ticketDate, ticketRouteNumber));
+                        } catch (RuntimeException ex) {
+                            System.err.println(ex.getMessage());
+                            System.out.println("=============================================================" +
+                                    "========================");
+                            return true;
+                        }
+                        printAllTickets(customer.getSelectedTickets());
+                        buyTicketMenu();
+                        return true;
+                        //return;
+                    }
+                    return true;
+                }
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    /**
+     * Метод ввода номера маршрута
+     *
+     * @return номер маршрута
+     */
     private int runSelectRouteMenu() {
         System.out.println("Input route number and date. | User " + customer.getUser().getUserName() + " |");
         System.out.println("=====================================================================================");
@@ -189,8 +223,13 @@ public class Start extends EnterData {
         return numRoute;
     }
 
+    /**
+     * Метод ввода даты поездки
+     *
+     * @return дата поездки
+     */
     private Date runSelectDate() {
-        System.out.print("Date > ");
+        System.out.print("Date (format: YYYY-MM-DD) > ");
         //Здесь ограничиваем число маршрутов. У на всего 2 маршрута.
         Date date;
         try {
@@ -204,14 +243,21 @@ public class Start extends EnterData {
         return date;
     }
 
-    private void printAllTickets(List<ITicket> ticks) {
+    /**
+     * Метод вывода в консоль списка билетов
+     *
+     * @param ticks список билетов
+     */
+    private void printAllTickets(List<Ticket> ticks) {
         for (var t : ticks) {
             System.out.println(t.toString());
         }
         System.out.println("=====================================================================================");
     }
 
-
+    /**
+     * Метод покупки билета
+     */
     private void buyTicketMenu() {
         System.out.println("Confirm to buy. | User " + customer.getUser().getUserName() + " |");
         System.out.println("=====================================================================================");
@@ -219,6 +265,15 @@ public class Start extends EnterData {
                 " \"Yes\" > ");
         String answer = inputString();
         System.out.println("=====================================================================================");
+        buyTicketMenuConfirmLogic(answer);
+    }
+
+    /**
+     * Логика ветвления меню подтверждения покупки
+     *
+     * @param answer
+     */
+    private void buyTicketMenuConfirmLogic(String answer) {
         if (answer.equalsIgnoreCase("YES")) {
             for (var t : customer.getSelectedTickets()) {
                 if (t.getDate().equals(ticketDate) && t.getRouteNumber() == ticketRouteNumber && t.getValid()) {

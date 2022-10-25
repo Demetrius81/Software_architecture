@@ -1,10 +1,11 @@
 package Models;
 
-import Interfaces.IUser;
-
 import java.util.Objects;
 
-public class User implements IUser {
+/**
+ * Модель пользователя
+ */
+public class User {
     private int id;
     private String userName;
     private int hashPassword;
@@ -17,22 +18,22 @@ public class User implements IUser {
         this.cardNumber = cardNumber;
     }
 
-    @Override
+
     public int getId() {
         return id;
     }
 
-    @Override
+
     public String getUserName() {
         return userName;
     }
 
-    @Override
+
     public int getHashPassword() {
         return hashPassword;
     }
 
-    @Override
+
     public long getCardNumber() {
         return cardNumber;
     }
@@ -53,7 +54,7 @@ public class User implements IUser {
         return this.equals(client);
     }
 
-    @Override
+
     public boolean equals(User client) {
         return id == client.id && hashPassword == client.hashPassword && cardNumber == client.cardNumber && userName.equals(client.userName);
     }

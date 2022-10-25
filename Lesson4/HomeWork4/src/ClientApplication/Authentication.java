@@ -1,15 +1,25 @@
 package ClientApplication;
 
 import Core.UserProvider;
-import Interfaces.IUser;
+import Models.User;
 
+/**
+ * Класс аутентификации пользователя
+ */
 public class Authentication {
-
-    public static IUser authentication(UserProvider userProvider, String login, int passHash){
+    /**
+     * Метод производит аутентификацию
+     *
+     * @param userProvider
+     * @param login
+     * @param passHash
+     * @return
+     */
+    public static User authentication(UserProvider userProvider, String login, int passHash) {
         var client = userProvider.getClientByName(login);
-        if(client.getHashPassword() == passHash){
+        if (client.getHashPassword() == passHash) {
             return client;
-        }else {
+        } else {
             throw new RuntimeException("Authentication fail");
         }
     }

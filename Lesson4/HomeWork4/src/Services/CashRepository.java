@@ -6,9 +6,11 @@ import Models.BankAccount;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс репозиторий для имитации работы с базой данных банка
+ */
 public class CashRepository implements ICashRepo {
     private static CashRepository cashRepository;
-
 
     private List<BankAccount> clients;
 
@@ -19,14 +21,14 @@ public class CashRepository implements ICashRepo {
     private CashRepository() {
         //имитация работы банка
         clients = new ArrayList<>();
-        for (int i = 1; i <= 5; i++){
+        for (int i = 1; i <= 5; i++) {
             clients.add(new BankAccount());
         }
 
     }
 
-    public static CashRepository getCashRepository(){
-        if(cashRepository == null){
+    public static CashRepository getCashRepository() {
+        if (cashRepository == null) {
             cashRepository = new CashRepository();
         }
         return cashRepository;
@@ -34,30 +36,36 @@ public class CashRepository implements ICashRepo {
 
     @Override
     public boolean transaction(int payment, long cardFrom, long carrierСard) throws RuntimeException {
+        // Проводим валидацию аккаунтов
         BankAccount from = null;
         BankAccount to = null;
-        for (var client : clients){
-            if(client.getCard() == cardFrom){
+        for (var client : clients) {
+            if (client.getCard() == cardFrom) {
                 from = client;
             }
-            if(client.getCard() == carrierСard){
+            if (client.getCard() == carrierСard) {
                 to = client;
             }
         }
-        if(from == null){
+        // Проверяем наличие банковских карт продавца и покупателя
+        if (from == null) {
             throw new RuntimeException("No withdrawal account.");
         }
-        if(to == null){
+        if (to == null) {
             throw new RuntimeException("No money account.");
         }
+        // Проверяем баланс средств на картах
         if (from.getBalance() - payment < 0) {
             throw new RuntimeException("Insufficient funds.");
         }
-        if(to.getBalance() > Integer.MAX_VALUE - payment){
+        if (to.getBalance() > Integer.MAX_VALUE - payment) {
             throw new RuntimeException("Too much amount.");
         }
-        try{
-        }finally {
+        // Блок finally выполнится в любом случае, даже если произойдет исключение.
+        // Помещая операции по переводу денег в блок finally, мы создаем дополнительную безопасность
+        // проведения транзакции.
+        try {
+        } finally {
             clients.remove(from);
             clients.remove(to);
             from.setBalance(from.getBalance() - payment);

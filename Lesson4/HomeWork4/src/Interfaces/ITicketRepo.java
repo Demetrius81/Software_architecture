@@ -8,8 +8,35 @@ import java.util.List;
  * Интерфейс взаимодействия с базой билетов
  */
 public interface ITicketRepo {
-    boolean create(ITicket ticket);
-    List<ITicket> readAll(int routeNumber);
-    boolean update(ITicket ticket);
-    boolean delete(ITicket ticket);
+    /**
+     * Создать новый билет
+     *
+     * @param ticket
+     * @return
+     */
+    boolean create(Ticket ticket);
+
+    /**
+     * Получить список билетов по номеру маршрута
+     *
+     * @param routeNumber
+     * @return
+     */
+    List<Ticket> readAll(int routeNumber);
+
+    /**
+     * Обновить билет
+     *
+     * @param ticket
+     * @return
+     */
+    boolean update(Ticket ticket);
+
+    /**
+     * Удалить билет
+     *
+     * @param ticket
+     * @return
+     */
+    boolean delete(Ticket ticket);
 }

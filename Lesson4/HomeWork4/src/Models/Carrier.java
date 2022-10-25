@@ -1,5 +1,8 @@
 package Models;
 
+/**
+ * Модель перевозчика
+ */
 public class Carrier {
     private int id;
     private long cardNumber;

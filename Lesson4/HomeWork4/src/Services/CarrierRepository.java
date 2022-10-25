@@ -6,11 +6,15 @@ import Models.Carrier;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс репозиторий для имитации работы с базой данных перевозчиков
+ */
 public class CarrierRepository implements ICarrierRepo {
     private static CarrierRepository carrierRepository;
     private List<Carrier> carriers;
 
     private CarrierRepository() {
+        // Заполняем базу данных
         carriers = new ArrayList<>();
         carriers.add(new Carrier(1, 1));
 

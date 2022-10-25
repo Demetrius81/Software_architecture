@@ -1,5 +1,8 @@
 package Models;
 
+/**
+ * Модель банковского аккаунта
+ */
 public class BankAccount {
     private long card;
     private static long oldCard;
@@ -9,6 +12,7 @@ public class BankAccount {
     public void setBalance(int balance) {
         this.balance = balance;
     }
+
     public long getCard() {
         return card;
     }

@@ -1,15 +1,17 @@
 package Services;
 
-import Interfaces.IUser;
 import Interfaces.IUserRepo;
 import Models.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс репозиторий для имитации работы с базой данных
+ */
 public class UserRepository implements IUserRepo {
     private static UserRepository clientRepository;
-    private List<IUser> clients;
+    private List<User> clients;
 
     private UserRepository() {
         //имитация работы базы клиентов
@@ -28,7 +30,7 @@ public class UserRepository implements IUserRepo {
     }
 
     @Override
-    public int create(String userName, int passwordHash,long cardNumber) throws RuntimeException {
+    public int create(String userName, int passwordHash, long cardNumber) throws RuntimeException {
         int id = clients.size() + 1;
         User client = new User(id, userName, passwordHash, cardNumber);
         for (var currentClient : clients) {
@@ -36,12 +38,12 @@ public class UserRepository implements IUserRepo {
                 throw new RuntimeException("A client already exists");
             }
         }
-        clients.add((User)client);
+        clients.add(client);
         return client.getId();
     }
 
     @Override
-    public IUser read(int id) throws RuntimeException {
+    public User read(int id) throws RuntimeException {
         for (var client : clients) {
             if (client.getId() == id) {
                 return client;
@@ -51,7 +53,7 @@ public class UserRepository implements IUserRepo {
     }
 
     @Override
-    public IUser read(String userName) throws RuntimeException {
+    public User read(String userName) throws RuntimeException {
         for (var client : clients) {
             var clientName = client.getUserName();
             if (clientName.equals(userName)) {
@@ -62,7 +64,7 @@ public class UserRepository implements IUserRepo {
     }
 
     @Override
-    public List<IUser> readAll() throws RuntimeException {
+    public List<User> readAll() throws RuntimeException {
         if (clients.isEmpty()) {
             throw new RuntimeException("List of clients is empty");
         }
@@ -70,12 +72,12 @@ public class UserRepository implements IUserRepo {
     }
 
     @Override
-    public boolean update(IUser client) {
+    public boolean update(User client) {
         User tempClient = null;
-        for (IUser currentClient : clients) {
+        for (User currentClient : clients) {
             if (currentClient.getId() == client.getId()) {
                 clients.remove(currentClient);
-                clients.add((User)client);
+                clients.add(client);
                 return true;
             }
         }
@@ -83,9 +85,9 @@ public class UserRepository implements IUserRepo {
     }
 
     @Override
-    public boolean delete(IUser client) {
-        for (IUser currentClient : clients) {
-            if (currentClient.equals((User)client)) {
+    public boolean delete(User client) {
+        for (User currentClient : clients) {
+            if (currentClient.equals(client)) {
                 clients.remove(currentClient);
                 return true;
             }

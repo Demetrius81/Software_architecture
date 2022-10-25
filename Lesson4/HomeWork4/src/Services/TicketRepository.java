@@ -1,15 +1,17 @@
 package Services;
 
-import Interfaces.ITicket;
 import Interfaces.ITicketRepo;
 import Models.Ticket;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * Класс репозиторий для имитации работы с базой данных
+ */
 public class TicketRepository implements ITicketRepo {
     private static TicketRepository ticketRepository;
-    private List<ITicket> tickets;
+    private List<Ticket> tickets;
 
     private TicketRepository() {
         //здесь симуляция работы с БД
@@ -34,16 +36,16 @@ public class TicketRepository implements ITicketRepo {
     }
 
     @Override
-    public boolean create(ITicket ticket) {
+    public boolean create(Ticket ticket) {
         //функционал не используется
-        tickets.add((Ticket)ticket);
+        tickets.add(ticket);
         return true;
     }
 
     @Override
-    public List<ITicket> readAll(int routeNumber) throws RuntimeException {
-        List<ITicket> routeTickets = new ArrayList<>();
-        for (ITicket ticket : tickets) {
+    public List<Ticket> readAll(int routeNumber) throws RuntimeException {
+        List<Ticket> routeTickets = new ArrayList<>();
+        for (Ticket ticket : tickets) {
             if (ticket.getRouteNumber() == routeNumber && ticket.getValid() == true) {
                 routeTickets.add(ticket);
             }
@@ -55,11 +57,11 @@ public class TicketRepository implements ITicketRepo {
     }
 
     @Override
-    public boolean update(ITicket ticket) {
-        for (ITicket tick : tickets) {
+    public boolean update(Ticket ticket) {
+        for (Ticket tick : tickets) {
             if (tick.equals(ticket)) {
                 tickets.remove(tick);
-                tickets.add((Ticket)ticket);
+                tickets.add(ticket);
                 return true;
             }
         }
@@ -67,7 +69,7 @@ public class TicketRepository implements ITicketRepo {
     }
 
     @Override
-    public boolean delete(ITicket ticket) {
+    public boolean delete(Ticket ticket) {
         //функционал не используется
         if (tickets.contains(ticket)) {
             tickets.remove(ticket);

@@ -1,9 +1,8 @@
 package Core;
 
-import Interfaces.IUser;
 import Interfaces.ICustomer;
-import Interfaces.ITicket;
 import Models.Ticket;
+import Models.User;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,8 +15,8 @@ public class Customer implements ICustomer {
     private TicketProvider ticketProvider;
     private CashProvider cashProvider;
     private UserProvider userProvider;
-    private IUser client;
-    private List<ITicket> selectedTickets;
+    private User client;
+    private List<Ticket> selectedTickets;
 
     /**
      * Конструктор класса
@@ -32,12 +31,12 @@ public class Customer implements ICustomer {
     }
 
     @Override
-    public List<ITicket> getSelectedTickets() {
+    public List<Ticket> getSelectedTickets() {
         return selectedTickets;
     }
 
     @Override
-    public void setSelectedTickets(List<ITicket> selectedTickets) {
+    public void setSelectedTickets(List<Ticket> selectedTickets) {
         this.selectedTickets = selectedTickets;
     }
 
@@ -47,23 +46,17 @@ public class Customer implements ICustomer {
     }
 
     @Override
-    public IUser getUser() {
+    public User getUser() {
         return client;
     }
 
     @Override
-    public void setUser(IUser client) {
+    public void setUser(User client) {
         this.client = client;
     }
 
-    /**
-     * Метод покупки билета
-     * @param ticket билет
-     * @return успешность выполненной операции
-     * @throws RuntimeException
-     */
     @Override
-    public boolean buyTicket(ITicket ticket) throws RuntimeException {
+    public boolean buyTicket(Ticket ticket) throws RuntimeException {
         boolean flag;
         cashProvider.authorization(client);
         flag = cashProvider.buy(ticket);
@@ -73,20 +66,13 @@ public class Customer implements ICustomer {
         return flag;
     }
 
-    /**
-     * Метод поиска билетов по дате и номеру маршрута
-     * @param date дата
-     * @param route номер маршрута
-     * @return список доступных для приобретения билетов
-     * @throws RuntimeException
-     */
     @Override
-    public List<ITicket> searchTicket(Date date, int route) throws RuntimeException {
-        List<ITicket> result = new ArrayList<>();
+    public List<Ticket> searchTicket(Date date, int route) throws RuntimeException {
+        List<Ticket> result = new ArrayList<>();
         var list = ticketProvider.getTickets(route);
-        for (ITicket ticket : list) {
+        for (Ticket ticket : list) {
             if (ticket.getDate().equals(date)) {
-                result.add((Ticket)ticket);
+                result.add(ticket);
             }
         }
         if (result.isEmpty()) {

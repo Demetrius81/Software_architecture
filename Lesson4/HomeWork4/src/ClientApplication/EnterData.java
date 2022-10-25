@@ -34,6 +34,14 @@ public abstract class EnterData {
         return num;
     }
 
+    /**
+     * Метод ввода и валидации целого числа в диапазоне
+     *
+     * @param minVariant минимальное число
+     * @param maxVariant максимальное число
+     * @return введенное целое число
+     * @throws RuntimeException
+     */
     protected long inputLong(long minVariant, long maxVariant) throws RuntimeException {
         long num = 0;
         Scanner in = new Scanner(System.in);
@@ -71,6 +79,7 @@ public abstract class EnterData {
 
     /**
      * Meтод ввода даты и ее валидация
+     *
      * @return дата
      * @throws RuntimeException
      */
