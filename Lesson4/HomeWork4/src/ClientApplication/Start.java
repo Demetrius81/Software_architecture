@@ -20,6 +20,8 @@ public class Start extends EnterData {
         while (true) {
             System.out.println("Application for buying bus tickets");
             System.out.println("=====================================================================================");
+            System.out.println("This is a test version. The data base is not available in full mode.");
+            System.out.println("=====================================================================================");
             System.out.println("To login\t\t\tenter 1");
             System.out.println("To register\t\t\tenter 2");
             System.out.println("To exit\t\t\t\tenter 0");
@@ -46,7 +48,12 @@ public class Start extends EnterData {
                     }
                 case 2:
                     register();
-                    break;
+                    if (customer == null) {
+                        break;
+                    } else {
+                        runBuyingMenu();
+                        break;
+                    }
                 default:
                     return;
             }
@@ -54,6 +61,8 @@ public class Start extends EnterData {
     }
 
     private void login() {
+        System.out.println("This is a test version. The data base is not available in full mode.");
+        System.out.println("=====================================================================================");
         System.out.println("Login");
         System.out.println("=====================================================================================");
         System.out.print("User name: ");
@@ -76,9 +85,39 @@ public class Start extends EnterData {
     }
 
     private void register() {
-        System.out.println("This is a test version. This functionality is not available.");
+        System.out.println("This is a test version. The data base is not available in full mode.");
         System.out.println("=====================================================================================");
-        //TODO: Implement register logic
+        System.out.println("Register");
+        System.out.println("=====================================================================================");
+        System.out.print("Enter user name: ");
+        String userName = inputString();
+        System.out.print("Enter password: ");
+        int passwordHash = inputString().hashCode();
+        System.out.print("Repeat password: ");
+        int passwordHash2 = inputString().hashCode();
+        if(passwordHash != passwordHash2){
+            System.out.println("=====================================================================================");
+            System.out.println("Passwords do not match. Exit register.");
+            System.out.println("=====================================================================================");
+            return;
+        }
+        System.out.print("Enter card number: ");
+        long cardNumber = inputLong(1L, 9999_9999_9999_9999L);
+        System.out.println("=====================================================================================");
+        System.out.print("Register the system... ");
+        customer = new Customer();
+        int id;
+        try {
+            id = customer.getUserProvider().createClient(userName, passwordHash, cardNumber);
+            customer.setUser(Authentication.authentication(customer.getUserProvider(), userName, passwordHash));
+        } catch (RuntimeException ex) {
+            System.out.println("FAIL");
+            System.out.println(ex.getMessage());
+            System.out.println("=====================================================================================");
+            return;
+        }
+        System.out.println("OK. user " + customer.getUser().getUserName() + " with ID " + id + "added to base.");
+        System.out.println("=====================================================================================");
     }
 
     private void runBuyingMenu() {

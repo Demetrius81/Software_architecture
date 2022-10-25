@@ -28,7 +28,9 @@ public class UserRepository implements IUserRepo {
     }
 
     @Override
-    public int create(IUser client) throws RuntimeException {
+    public int create(String userName, int passwordHash,long cardNumber) throws RuntimeException {
+        int id = clients.size() + 1;
+        User client = new User(id, userName, passwordHash, cardNumber);
         for (var currentClient : clients) {
             if (currentClient.getId() == client.getId()) {
                 throw new RuntimeException("A client already exists");

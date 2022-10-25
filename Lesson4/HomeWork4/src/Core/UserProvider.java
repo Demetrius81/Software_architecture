@@ -14,10 +14,9 @@ public class UserProvider {
         this.clientRepository = UserRepository.getClientRepository();
     }
 
-    public int createClient(int id, String userName, int passwordHash, long cardNumber) throws RuntimeException {
-        User client = new User(id, userName, passwordHash, cardNumber);
-        clientRepository.create(client);
-        return client.getId();
+    public int createClient(String userName, int passwordHash, long cardNumber) throws RuntimeException {
+        int id = clientRepository.create(userName, passwordHash, cardNumber);
+        return id;
     }
 
     public IUser getClientByName(String userName) throws RuntimeException {

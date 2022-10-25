@@ -34,6 +34,22 @@ public abstract class EnterData {
         return num;
     }
 
+    protected long inputLong(long minVariant, long maxVariant) throws RuntimeException {
+        long num = 0;
+        Scanner in = new Scanner(System.in);
+        try {
+            num = in.nextLong();
+        } catch (InputMismatchException ex) {
+            throw new RuntimeException("This is not number.");
+        } catch (Exception ex) {
+            throw new RuntimeException("Something wrong.");
+        }
+        if (num < minVariant || num > maxVariant) {
+            throw new RuntimeException("You entered an invalid value.");
+        }
+        return num;
+    }
+
     /**
      * Метод ввода строки и ее валидация на пустую строку
      *
