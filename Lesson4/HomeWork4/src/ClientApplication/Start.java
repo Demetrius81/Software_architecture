@@ -22,14 +22,9 @@ public class Start extends EnterData {
     public void runLoginRegisterMenu() {
         boolean run = true;
         while (run) {
-            System.out.println("Application for buying bus tickets");
-            System.out.println("=====================================================================================");
-            System.out.println("This is a test version. The data base is not available in full mode.");
-            System.out.println("=====================================================================================");
-            System.out.println("To login\t\t\tenter 1");
-            System.out.println("To register\t\t\tenter 2");
-            System.out.println("To exit\t\t\t\tenter 0");
-            System.out.println("=====================================================================================");
+            printMessageLine("Application for buying bus tickets");
+            printMessageLine("This is a test version. The data base is not available in full mode.");
+            printMessageLine("To login\t\t\tenter 1\nTo register\t\t\tenter 2\nTo exit\t\t\t\tenter 0");
             System.out.print("Enter your choice > ");
             int choice = 0;
             try {
@@ -77,10 +72,8 @@ public class Start extends EnterData {
      * Меню входа зарегестрированного пользователя
      */
     private void login() {
-        System.out.println("This is a test version. The data base is not available in full mode.");
-        System.out.println("=====================================================================================");
-        System.out.println("Login");
-        System.out.println("=====================================================================================");
+        printMessageLine("This is a test version. The data base is not available in full mode.");
+        printMessageLine("Login");
         System.out.print("User name: ");
         String userName = inputString();
         System.out.print("Password: ");
@@ -96,18 +89,15 @@ public class Start extends EnterData {
             System.out.println("=====================================================================================");
             return;
         }
-        System.out.println("OK");
-        System.out.println("=====================================================================================");
+        printMessageLine("OK");
     }
 
     /**
      * Меню регистрации нового пользователя
      */
     private void register() {
-        System.out.println("This is a test version. The data base is not available in full mode.");
-        System.out.println("=====================================================================================");
-        System.out.println("Register");
-        System.out.println("=====================================================================================");
+        printMessageLine("This is a test version. The data base is not available in full mode.");
+        printMessageLine("Register");
         System.out.print("Enter user name: ");
         String userName = inputString();
         System.out.print("Enter password: ");
@@ -116,8 +106,7 @@ public class Start extends EnterData {
         int passwordHash2 = inputString().hashCode();
         if (passwordHash != passwordHash2) {
             System.out.println("=====================================================================================");
-            System.out.println("Passwords do not match. Exit register.");
-            System.out.println("=====================================================================================");
+            printMessageLine("Passwords do not match. Exit register.");
             return;
         }
         System.out.print("Enter card number: ");
@@ -135,8 +124,7 @@ public class Start extends EnterData {
             System.out.println("=====================================================================================");
             return;
         }
-        System.out.println("OK. user " + customer.getUser().getUserName() + " with ID " + id + "added to base.");
-        System.out.println("=====================================================================================");
+        printMessageLine("OK. user " + customer.getUser().getUserName() + " with ID " + id + "added to base.");
     }
 
     /**
@@ -145,11 +133,9 @@ public class Start extends EnterData {
     private void runBuyingMenu() {
         boolean run = true;
         while (run) {
-            System.out.println("Application for buying bus tickets. | User " + customer.getUser().getUserName() + " |");
-            System.out.println("=====================================================================================");
-            System.out.println("To select route number and print all tickets\tenter 1");
-            System.out.println("To logout\t\t\t\t\t\t\t\t\t\tenter 0");
-            System.out.println("=====================================================================================");
+            printMessageLine("Application for buying bus tickets. | User " + customer.getUser().getUserName() + " |");
+            printMessageLine("To select route number and print all tickets\tenter 1\n" +
+                    "To logout\t\t\t\t\t\t\t\t\t\tenter 0");
             System.out.print("Enter your choice > ");
             int choice = 0;
             try {
@@ -157,9 +143,7 @@ public class Start extends EnterData {
             } catch (RuntimeException ex) {
                 System.out.println("==============================================================================" +
                         "=======");
-                System.out.println(ex.getMessage());
-                System.out.println("==============================================================================" +
-                        "=======");
+                printMessageLine(ex.getMessage());
                 continue;
             }
             System.out.println("=====================================================================================");
@@ -183,9 +167,7 @@ public class Start extends EnterData {
                         try {
                             customer.setSelectedTickets(customer.searchTicket(ticketDate, ticketRouteNumber));
                         } catch (RuntimeException ex) {
-                            System.err.println(ex.getMessage());
-                            System.out.println("=============================================================" +
-                                    "========================");
+                            printMessageLine(ex.getMessage());
                             return true;
                         }
                         printAllTickets(customer.getSelectedTickets());
@@ -207,16 +189,14 @@ public class Start extends EnterData {
      * @return номер маршрута
      */
     private int runSelectRouteMenu() {
-        System.out.println("Input route number and date. | User " + customer.getUser().getUserName() + " |");
-        System.out.println("=====================================================================================");
+        printMessageLine("Input route number and date. | User " + customer.getUser().getUserName() + " |");
         System.out.print("Route number > ");
         //Здесь ограничиваем число маршрутов. У на всего 2 маршрута.
         int numRoute;
         try {
             numRoute = inputInt(1, 2);
         } catch (RuntimeException ex) {
-            System.out.println(ex.getMessage());
-            System.out.println("=====================================================================================");
+            printMessageLine(ex.getMessage());
             return -1;
         }
         System.out.println("=====================================================================================");
@@ -235,8 +215,7 @@ public class Start extends EnterData {
         try {
             date = inputDate();
         } catch (RuntimeException ex) {
-            System.out.println(ex.getMessage());
-            System.out.println("=====================================================================================");
+            printMessageLine(ex.getMessage());
             return null;
         }
         System.out.println("=====================================================================================");
@@ -259,8 +238,7 @@ public class Start extends EnterData {
      * Метод покупки билета
      */
     private void buyTicketMenu() {
-        System.out.println("Confirm to buy. | User " + customer.getUser().getUserName() + " |");
-        System.out.println("=====================================================================================");
+        printMessageLine("Confirm to buy. | User " + customer.getUser().getUserName() + " |");
         System.out.print("To buy a ticket for bus route " + ticketRouteNumber + " on the " + ticketDate + " enter" +
                 " \"Yes\" > ");
         String answer = inputString();
@@ -281,19 +259,25 @@ public class Start extends EnterData {
                     try {
                         flag = customer.buyTicket(t);
                     } catch (RuntimeException ex) {
-                        System.out.println(ex.getMessage());
-                        System.out.println("====================================================================" +
-                                "=================");
+                        printMessageLine(ex.getMessage());
                         return;
                     }
                     if (flag) {
-                        System.out.println(t.toPrint());
-                        System.out.println("====================================================================" +
-                                "=================");
+                        printMessageLine(t.toPrint());
                         return;
                     }
                 }
             }
         }
+    }
+
+    /**
+     * Метод вывода в консоль элемента сообщения
+     *
+     * @param message
+     */
+    private void printMessageLine(String message) {
+        System.out.println(message);
+        System.out.println("=====================================================================================");
     }
 }
