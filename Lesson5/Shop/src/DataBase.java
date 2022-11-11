@@ -6,10 +6,10 @@ public class DataBase {
     private static DataBase _instance;
 
     private DataBase() {
-        _products.add(new Product(1, "Лопата штыковая", 50, 100, "Обычная ржавая лопата"));
-        _products.add(new Product(2, "Лопата совковая", 24, 125, "Ржавая лопата в виде совка"));
-        _products.add(new Product(3, "Кирка", 34, 140, "Ржавая кирка для дробления твердых грунтов"));
-        _products.add(new Product(4, "Лом", 12, 80, "Ржавый лом для дробления камней и льда"));
+        _products.add(new Product(1, "Лопата штыковая", 50, 1400, "Обычная ржавая лопата\t\t\t\t\t\t"));
+        _products.add(new Product(2, "Лопата совковая", 24, 1560, "Ржавая лопата в виде совка\t\t\t\t"));
+        _products.add(new Product(3, "Кирка\t\t\t", 34, 440, "Ржавая кирка для дробления твердых грунтов"));
+        _products.add(new Product(4, "Лом\t\t\t", 12, 200, "Ржавый лом для дробления камней и льда\t"));
     }
 
     public List<Product> getProducts() {
