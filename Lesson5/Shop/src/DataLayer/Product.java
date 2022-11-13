@@ -1,20 +1,31 @@
+package DataLayer;
+
+/**
+ * Класс - модель продукта
+ */
 public class Product {
     private int _id;
     private String _name;
     private String _description;
     private int _price;
+    private int _count;
 
-    public Product(int _id, String _name, int _count, int _price,  String _description) {
+    /**
+     * Конструктор класса модели товара
+     *
+     * @param _id          идентификатор товара
+     * @param _name        название товара
+     * @param _count       количество данного товара на складе
+     * @param _price       цена товара
+     * @param _description описание товара
+     */
+    public Product(int _id, String _name, int _count, int _price, String _description) {
         this._id = _id;
         this._name = _name;
         this._description = _description;
         this._price = _price;
         this._count = _count;
     }
-
-    private int _count;
-
-
 
     public int getCount() {
         return _count;
