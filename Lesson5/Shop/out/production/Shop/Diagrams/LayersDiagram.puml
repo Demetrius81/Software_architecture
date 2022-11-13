@@ -1,0 +1,8 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+[Application Layer] --> [Logic Layer]
+[Logic Layer] --> [Data Layer]
+[Data Layer] --> [DataBase]
+
+@enduml

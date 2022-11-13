@@ -1,0 +1,93 @@
+@startuml
+
+
++abstract class BaseApp {
+    #printAllProducts(ILogic): int
+    #printAll(ILogic): int
+    #inputString(): String
+    #inputEnter()
+    #inputInt(int, int): int
+    #printLine(String message)
+}
+
++class ClientApp extends BaseApp {
+    - ILogic _logic
+    + ClientApp(ILogic)
+
+    + mainMenu()
+    - selectMainMenu(int): boolean
+    - catalogueMenu()
+    - selectBuyMenu(int): boolean
+    - buyMenu(int)
+}
+
++class DataBase {
+    - Product[] _products
+    - DataBase _instance
+    - DataBase()
+    + static DataBase getInstance()
+
+    + getProducts(): Product[]
+    + setProducts(Product[])
+}
+
++class Product {
+    - int _id;
+    - String _name;
+    - String _description;
+    - int _price;
+    - int _count;
+
+    + Product(int, String, int, int, String)
+
+    + getCount(): int
+    + setCount(int)
+    + getId(): int
+    + setId(int _id)
+    + getName(): String
+    + setName(String _name)
+    + getDescription(): String
+    + setDescription(String _description)
+    + getPrice(): int
+    + setPrice(int _price)
+}
+
++class ProductRepo implements IProductRepo {
+    - DataBase _context;
+
+    + ProductRepo(DataBase)
+
+    + getAllProducts(): Product[]
+    + getProductById(int): Product
+    + setNewCountProduct(int, int)
+}
+
++interface IProductRepo {
+    + getAllProducts(): Product[]
+    + getProductById(int): Product
+    + setNewCountProduct(int, int)
+}
+
++class Logic implements ILogic {
+    - IProductRepo _repository
+
+    + Logic(IProductRepo)
+
+    + buyProduct(int, int)
+    + showAllProducts(): Product[]
+    + showSelectedProduct(int): Product
+    - tryGetProduct(int): Product
+}
+
++interface ILogic {
+    + buyProduct(int, int)
+    + showAllProducts(): Product[]
+    + showSelectedProduct(int): Product
+}
+
+IProductRepo --o Logic
+ILogic --o ClientApp
+DataBase --o ProductRepo
+Product <-- DataBase
+
+@enduml

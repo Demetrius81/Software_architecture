@@ -1,0 +1,28 @@
+@startuml
+
++class Logic implements ILogic {
+    - IProductRepo _repository
+
+    + Logic(IProductRepo)
+
+    + buyProduct(int, int)
+    + showAllProducts(): Product[]
+    + showSelectedProduct(int): Product
+    - tryGetProduct(int): Product
+}
+
++interface ILogic {
+    + buyProduct(int, int)
+    + showAllProducts(): Product[]
+    + showSelectedProduct(int): Product
+}
+
++interface IProductRepo {
+    + getAllProducts(): Product[]
+    + getProductById(int): Product
+    + setNewCountProduct(int, int)
+}
+
+IProductRepo o-- Logic
+
+@enduml
