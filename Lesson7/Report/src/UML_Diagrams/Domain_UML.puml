@@ -1,0 +1,34 @@
+@startuml
+
++abstract class Entity{
+    +int Id
+}
+
++abstract class NamedEntity extends Entity{
+    +String Name
+}
+
++class Report extends Entity{
+    +DateTime Date
+    +Categoty[] Categories
+    +Provider[] Providers
+}
+
++class Category extends NamedEntity{
+    +Product[] Products
+}
+
++class Product extends NamedEntity{
+    +decimal Prise
+    +int Count
+}
+
++class Provider extends NamedEntity{
+    +int Rent
+}
+
+Category <--o Report
+Provider <--o Report
+Product <--o Category
+
+@enduml

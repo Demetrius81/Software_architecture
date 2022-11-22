@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/class-diagram
+
++class ReportController {
+-IService Service
++GetReport(HttpRequest): HttpResponse
+}
+
++class ReportService implements IService {
+-IRepository Repository
++GetSelectedReports(DateTime, DateTime, Category, Provider): Report[]
+}
+
++class DomainRepository implements IRepository {
++GetAll(DateTime, DateTime): Report[]
+}
+
++interface IRepository {
++GetAll(DateTime, DateTime): Report[]
+}
+
++interface IService {
++GetSelectedReports(DateTime, DateTime, Category, Provider): Report[]
+}
+
+ReportController o--> IService
+ReportService o--> IRepository
+
+
+@enduml
