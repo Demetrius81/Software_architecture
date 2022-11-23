@@ -2,9 +2,8 @@ using ReportService.Models.Base;
 
 namespace ReportService.Models;
 
+/// <summary>Класс модель категории товара</summary>
 public class Category : NamedEntity
 {
-    //public ICollection<Product> Products { get; set; } = new HashSet<Product>();
-
-    public Report ReportCategory { get; set; }
+    public Report? ReportCategory { get; set; }
 }

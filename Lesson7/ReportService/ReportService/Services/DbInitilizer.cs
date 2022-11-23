@@ -4,17 +4,30 @@ using ReportService.Models;
 
 namespace ReportService.Services;
 
+/// <summary>
+/// Класс инициализатор базы данных
+/// </summary>
 public class DbInitilizer
 {
     private readonly BaseContext _context;
     private readonly ILogger<DbInitilizer> _logger;
 
+    /// <summary>
+    /// Конструктор класса
+    /// </summary>
+    /// <param name="context"></param>
+    /// <param name="logger"></param>
     public DbInitilizer(BaseContext context, ILogger<DbInitilizer> logger)
     {
         _context = context;
         _logger = logger;
     }
 
+    /// <summary>
+    /// Метод удаляет базу данных
+    /// </summary>
+    /// <param name="cancel"></param>
+    /// <returns></returns>
     public async Task<bool> RemoveAsync(CancellationToken cancel = default)
     {
         if (!await _context.Database.EnsureDeletedAsync(cancel).ConfigureAwait(false))
@@ -27,6 +40,12 @@ public class DbInitilizer
         return true;
     }
 
+    /// <summary>
+    /// Метод инициализирует базу данных
+    /// </summary>
+    /// <param name="removeBefore"></param>
+    /// <param name="cancel"></param>
+    /// <returns></returns>
     public async Task InitializeAsync(bool removeBefore = false, CancellationToken cancel = default)
     {
         if (removeBefore)
@@ -38,6 +57,11 @@ public class DbInitilizer
         await AddTestDataAsync(cancel);
     }
 
+    /// <summary>
+    /// Метод заполняет базу данных тестовым контентом
+    /// </summary>
+    /// <param name="cancel"></param>
+    /// <returns></returns>
     private async Task AddTestDataAsync(CancellationToken cancel = default)
     {
         if (!await _context.Products.AnyAsync(cancel).ConfigureAwait(false))

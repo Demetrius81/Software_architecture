@@ -3,6 +3,9 @@ using ReportService.Models;
 
 namespace ReportService.Services.Repository;
 
+/// <summary>
+/// Класс репозиторий для доступа к БД отчетов
+/// </summary>
 public class ReportRepositoryAsync : IRepositoryAsync<Report>
 {
     private readonly BaseContext _context;

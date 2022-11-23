@@ -1,7 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace ReportService.Models.Base;
 
-namespace ReportService.Models.Base;
-
+/// <summary>Базовый абстрактный класс сущности</summary>
 public abstract class Entity
 {
     public int Id { get; set; }

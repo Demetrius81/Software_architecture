@@ -1,9 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace ReportService.Models.Base;
 
-namespace ReportService.Models.Base;
-
+/// <summary>Базовый абстрактный класс именованной сущности</summary>
 public class NamedEntity : Entity
 {
-    //[Required]
     public string Name { get; set; } = null!;
 }
