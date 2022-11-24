@@ -24,3 +24,6 @@ hs_err_pid*
 Lesson7/ReportService/ReportService/bin/Debug
 Lesson7/ReportService/.vs
 Lesson7/ReportService/ReportService/obj
+*.db-shm
+*.db-wal
+*.db
