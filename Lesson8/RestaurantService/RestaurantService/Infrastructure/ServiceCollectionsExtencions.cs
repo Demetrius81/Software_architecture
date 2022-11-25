@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RestaurantService.Models;
-using RestaurantService.Services;
+using RestaurantService.Services.Db;
+using RestaurantService.Services.Managers;
 using RestaurantService.Services.Repository;
 
 namespace RestaurantService.Infrastructure;

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RestaurantService.Models;
 
-namespace RestaurantService.Services;
+namespace RestaurantService.Services.Db;
 
 public class BaseContext : DbContext
 {

@@ -1,6 +1,6 @@
 ﻿using RestaurantService.Models;
 
-namespace RestaurantService.Services;
+namespace RestaurantService.Services.Managers;
 
 public interface IOrderManager
 {

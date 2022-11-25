@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RestaurantService.Models;
+using RestaurantService.Services.Db;
 
 namespace RestaurantService.Services.Repository;
 

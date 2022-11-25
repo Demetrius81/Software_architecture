@@ -1,7 +1,7 @@
 ﻿using RestaurantService.Models;
 using RestaurantService.Services.Repository;
 
-namespace RestaurantService.Services;
+namespace RestaurantService.Services.Managers;
 
 public class OrderManager : IOrderManager
 {
@@ -10,8 +10,8 @@ public class OrderManager : IOrderManager
 
     public OrderManager(IRepositoryAsync<Order> repository, ILogger<OrderManager> logger)
     {
-        this._repository = repository;
-        this._logger = logger;
+        _repository = repository;
+        _logger = logger;
     }
     public async Task<int> AddOrderAsync(Order item, CancellationToken cancel = default)
     {
