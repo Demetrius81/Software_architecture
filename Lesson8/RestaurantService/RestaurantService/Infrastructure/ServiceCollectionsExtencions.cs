@@ -30,7 +30,7 @@ public static class ServiceCollectionsExtensions
     {
         builder.Services.AddTransient<IRepositoryAsync<Order>, OrderRepository>();
         builder.Services.AddTransient<IOrderManager, OrderManager>();
-        //builder.Services.AddTransient<DbInitilizer>();
+        builder.Services.AddScoped<DbInitializer>();
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();

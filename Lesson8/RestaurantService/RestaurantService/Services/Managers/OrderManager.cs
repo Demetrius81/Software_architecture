@@ -6,13 +6,13 @@ namespace RestaurantService.Services.Managers;
 public class OrderManager : IOrderManager
 {
     private readonly IRepositoryAsync<Order> _repository;
-    private readonly ILogger<OrderManager> _logger;
+    //private readonly ILogger<OrderManager> _logger;
 
     public OrderManager(IRepositoryAsync<Order> repository, ILogger<OrderManager> logger)
     {
         _repository = repository;
-        _logger = logger;
-        _logger.LogInformation($">>>Создан объект класса {nameof(OrderManager)}");
+        //_logger = logger;
+        logger.LogInformation($">>>Создан объект класса {nameof(OrderManager)}");
     }
     public async Task<int> AddOrderAsync(Order item, CancellationToken cancel = default)
     {
