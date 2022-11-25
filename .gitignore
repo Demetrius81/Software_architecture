@@ -27,3 +27,5 @@ Lesson7/ReportService/ReportService/obj
 *.db-shm
 *.db-wal
 *.db
+/Lesson8/RestaurantService/RestaurantService/obj
+/Lesson8/RestaurantService/.vs/RestaurantService
