@@ -29,3 +29,4 @@ Lesson7/ReportService/ReportService/obj
 *.db
 /Lesson8/RestaurantService/RestaurantService/obj
 /Lesson8/RestaurantService/.vs/RestaurantService
+/Lesson8/RestaurantService/RestaurantService/bin/Debug/net7.0
