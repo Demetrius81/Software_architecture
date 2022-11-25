@@ -12,6 +12,7 @@ public class OrderManager : IOrderManager
     {
         _repository = repository;
         _logger = logger;
+        _logger.LogInformation($">>>Создан объект класса {nameof(OrderManager)}");
     }
     public async Task<int> AddOrderAsync(Order item, CancellationToken cancel = default)
     {

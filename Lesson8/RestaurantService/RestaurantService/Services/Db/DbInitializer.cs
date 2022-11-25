@@ -73,7 +73,9 @@ public class DbInitializer
                 });
 
             _context.Clients.AddRange(clients);
+            _logger.LogInformation(">>> В БД добавлены клиенты");
             await _context.SaveChangesAsync();
+            _logger.LogInformation(">>> Сохранены изменения в БД");
         }
 
         if (!await _context.Tables.AnyAsync(cancel).ConfigureAwait(false))
@@ -88,7 +90,9 @@ public class DbInitializer
                 });
 
             _context.Tables.AddRange(tables);
+            _logger.LogInformation(">>> В БД добавлены столики");
             await _context.SaveChangesAsync();
+            _logger.LogInformation(">>> Сохранены изменения в БД");
         }
 
         if (!await _context.Orders.AnyAsync(cancel).ConfigureAwait(false))
@@ -109,6 +113,7 @@ public class DbInitializer
             _logger.LogInformation(">>> В БД добавлены заказы");
             await _context.SaveChangesAsync();
             _logger.LogInformation(">>> Сохранены изменения в БД");
+            
         }
 
     }

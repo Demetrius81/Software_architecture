@@ -13,11 +13,14 @@ public class OrderRepository : IRepositoryAsync<Order>
     {
         this._context = context;
         this._logger = logger;
+        _logger.LogInformation($"Создан объект класса {nameof(OrderRepository)}");
     }
 
     public async Task<int> AddAsync(Order item, CancellationToken cancel = default)
     {
         var result = await _context.AddAsync(item, cancel).ConfigureAwait(false);
+        await _context.SaveChangesAsync();
+        _logger.LogInformation($">>>Added {result}");
         return result.Entity.Id;
     }
 
@@ -26,6 +29,8 @@ public class OrderRepository : IRepositoryAsync<Order>
         if(!(await _context.FindAsync<Order>(item, cancel).ConfigureAwait(false) is Order order && Equals(order, item)))
             return false;
         _context.Remove(item);
+        await _context.SaveChangesAsync();
+        _logger.LogInformation($">>>Deleted {item}");
         return true;
     }
 
@@ -46,9 +51,11 @@ public class OrderRepository : IRepositoryAsync<Order>
 
     public async Task<bool> UpdateAsync(Order item, CancellationToken cancel = default)
     {
-        if (!(await _context.FirstOrDefaultAsync<Order>(i => i.id == item.Id, cancel).ConfigureAwait(false) is Order order && Equals(order, item)))
+        if (!(await _context.Orders.FirstOrDefaultAsync<Order>(i => i.Id == item.Id, cancel).ConfigureAwait(false) is Order order && Equals(order, item)))
             return false;
         _context.Update(item);
+        await _context.SaveChangesAsync();
+        _logger.LogInformation($">>>Updated {item}");
         return true;
     }
 }
