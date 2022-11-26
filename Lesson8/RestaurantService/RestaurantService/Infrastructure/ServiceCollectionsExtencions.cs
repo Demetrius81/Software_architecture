@@ -29,6 +29,8 @@ public static class ServiceCollectionsExtensions
     public static WebApplicationBuilder ConfigureServices(this WebApplicationBuilder builder)
     {
         builder.Services.AddTransient<IRepositoryAsync<Order>, OrderRepository>();
+        builder.Services.AddTransient<IRepositoryAsync<Client>, ClientRepository>();
+        builder.Services.AddTransient<IRepositoryAsync<Table>, TableRepository>();
         builder.Services.AddTransient<IOrderManager, OrderManager>();
         builder.Services.AddScoped<DbInitializer>();
         builder.Services.AddControllers();

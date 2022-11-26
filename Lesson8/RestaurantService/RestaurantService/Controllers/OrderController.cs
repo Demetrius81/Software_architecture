@@ -48,7 +48,7 @@ public class OrderController : ControllerBase
     [Route("/api/Update")]
     [SwaggerOperation("Update")]
     [SwaggerResponse(statusCode: 200, type: typeof(int), description: "Successful operation")]
-    public async Task<IActionResult> UpdateAsync([FromBody] Order order)
+    public async Task<IActionResult> UpdateAsync([FromBody] OrderDTO order)
     {
         return Ok(await _orderManager.UpdateOrderAsync(order));
     }
@@ -57,7 +57,7 @@ public class OrderController : ControllerBase
     [Route("/api/Remove")]
     [SwaggerOperation("Delete")]
     [SwaggerResponse(statusCode: 200, type: typeof(int), description: "Successful operation")]
-    public async Task<IActionResult> DeleteAsync([FromBody] Order order)
+    public async Task<IActionResult> DeleteAsync([FromBody] OrderDTO order)
     {
         return Ok(await _orderManager.DeleteOrderAsync(order));
     }
@@ -66,7 +66,7 @@ public class OrderController : ControllerBase
     [Route("/api/Add")]
     [SwaggerOperation("Add")]
     [SwaggerResponse(statusCode: 200, type: typeof(int), description: "Successful operation")]
-    public async Task<IActionResult> AddAsync([FromBody] Order order)
+    public async Task<IActionResult> AddAsync([FromBody] OrderDTO order)
     {
         return Ok(await _orderManager.AddOrderAsync(order));
     }

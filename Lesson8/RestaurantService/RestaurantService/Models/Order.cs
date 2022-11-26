@@ -4,8 +4,8 @@ namespace RestaurantService.Models;
 
 public class Order : Entity
 {
-    public Client CurrentClient { get; set; } = null!;
-    public Table CurrentTable { get; set; } = null!;
+    public int ClientId { get; set; }
+    public int TableId { get; set; }
     public DateTimeOffset DateTime { get; set; } = DateTimeOffset.UtcNow;
 
     public override int GetHashCode()

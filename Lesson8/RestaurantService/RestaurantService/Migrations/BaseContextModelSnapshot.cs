@@ -54,20 +54,16 @@ namespace RestaurantService.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CurrentClientId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("CurrentTableId")
+                    b.Property<int>("ClientId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTimeOffset>("DateTime")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("TableId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
-
-                    b.HasIndex("CurrentClientId");
-
-                    b.HasIndex("CurrentTableId");
 
                     b.ToTable("Orders");
                 });
@@ -87,25 +83,6 @@ namespace RestaurantService.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tables");
-                });
-
-            modelBuilder.Entity("RestaurantService.Models.Order", b =>
-                {
-                    b.HasOne("RestaurantService.Models.Client", "CurrentClient")
-                        .WithMany()
-                        .HasForeignKey("CurrentClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RestaurantService.Models.Table", "CurrentTable")
-                        .WithMany()
-                        .HasForeignKey("CurrentTableId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CurrentClient");
-
-                    b.Navigation("CurrentTable");
                 });
 #pragma warning restore 612, 618
         }

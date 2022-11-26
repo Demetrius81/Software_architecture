@@ -99,14 +99,14 @@ public class DbInitializer
         {
             var rnd = new Random();
 
-            var clients = _context.Clients.ToArray();
-            var tables = _context.Tables.ToArray();
+            var clients = _context.Clients.Count();
+            var tables = _context.Tables.Count();
 
             var orders = Enumerable.Range(1, 5)
                 .Select(i => new Order
                 {
-                    CurrentClient = clients[rnd.Next(0, clients.Length)],
-                    CurrentTable= tables[rnd.Next(0, tables.Length)]
+                    ClientId = rnd.Next(0, clients),
+                    TableId= rnd.Next(0, tables)
                 });
 
             _context.Orders.AddRange(orders);
