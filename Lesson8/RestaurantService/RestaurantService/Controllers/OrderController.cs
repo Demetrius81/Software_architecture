@@ -4,6 +4,10 @@ using RestaurantService.Services.Managers;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace RestaurantService.Controllers;
+
+/// <summary>
+/// Контроллер заказов
+/// </summary>
 [Route("api/[controller]")]
 [ApiController]
 public class OrderController : ControllerBase
@@ -11,12 +15,21 @@ public class OrderController : ControllerBase
     private readonly IOrderManager _orderManager;
     private readonly ILogger<OrderController> _logger;
 
+    /// <summary>
+    /// Конструктор класса
+    /// </summary>
+    /// <param name="orderManager"></param>
+    /// <param name="logger"></param>
     public OrderController(IOrderManager orderManager, ILogger<OrderController> logger)
     {
         this._orderManager = orderManager;
         this._logger = logger;
     }
 
+    /// <summary>
+    /// Получение списка всех заказов
+    /// </summary>
+    /// <returns></returns>
     [HttpGet]
     [Route("/api/GetAllOrders")]
     [SwaggerOperation("GetAll")]
@@ -26,6 +39,11 @@ public class OrderController : ControllerBase
         return Ok(await _orderManager.GetAllOrdersAsync());
     }
 
+    /// <summary>
+    /// Получение заказа по номеру
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     [HttpGet]
     [Route("/api/GetOrderById/id={id}")]
     [SwaggerOperation("GetById")]
@@ -35,6 +53,10 @@ public class OrderController : ControllerBase
         return Ok(await _orderManager.GetOrderByIdAsync(id));
     }
 
+    /// <summary>
+    /// Получение количества заказов
+    /// </summary>
+    /// <returns></returns>
     [HttpGet]
     [Route("/api/GetCountOrders")]
     [SwaggerOperation("GetCount")]
@@ -44,6 +66,11 @@ public class OrderController : ControllerBase
         return Ok(await _orderManager.GetCountOrdersAsync());
     }
 
+    /// <summary>
+    /// Изменение заказа
+    /// </summary>
+    /// <param name="order"></param>
+    /// <returns></returns>
     [HttpPut]
     [Route("/api/Update")]
     [SwaggerOperation("Update")]
@@ -53,6 +80,11 @@ public class OrderController : ControllerBase
         return Ok(await _orderManager.UpdateOrderAsync(order));
     }
 
+    /// <summary>
+    /// Удаление заказа
+    /// </summary>
+    /// <param name="order"></param>
+    /// <returns></returns>
     [HttpDelete]
     [Route("/api/Remove")]
     [SwaggerOperation("Delete")]
@@ -62,6 +94,11 @@ public class OrderController : ControllerBase
         return Ok(await _orderManager.DeleteOrderAsync(order));
     }
 
+    /// <summary>
+    /// Добавление нового заказа
+    /// </summary>
+    /// <param name="order"></param>
+    /// <returns></returns>
     [HttpPost]
     [Route("/api/Add")]
     [SwaggerOperation("Add")]

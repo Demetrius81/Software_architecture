@@ -7,11 +7,10 @@ internal class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        builder
+        var app = builder
             .ConfigureDbContext()
-            .ConfigureServices();
-
-        var app = builder.Build();
+            .ConfigureServices()
+            .Build();
 
         using (var scope = app.Services.CreateScope())
         {

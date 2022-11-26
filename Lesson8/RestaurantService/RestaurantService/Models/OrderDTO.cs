@@ -2,6 +2,7 @@
 
 namespace RestaurantService.Models;
 
+/// <summary>Класс модель ДТО заказа</summary>
 public class OrderDTO : Entity
 {
     public Client? CurrentClient { get; set; } = null!;

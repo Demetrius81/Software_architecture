@@ -3,6 +3,9 @@ using RestaurantService.Models;
 
 namespace RestaurantService.Services.Db;
 
+/// <summary>
+/// Класс инициализатор базы данных
+/// </summary>
 public class DbInitializer
 {
     private readonly BaseContext _context;

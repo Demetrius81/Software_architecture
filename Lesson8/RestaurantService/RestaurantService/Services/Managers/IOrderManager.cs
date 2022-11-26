@@ -1,7 +1,9 @@
 ﻿using RestaurantService.Models;
 
 namespace RestaurantService.Services.Managers;
-
+/// <summary>
+/// Интерфейс менеджера заказов
+/// </summary>
 public interface IOrderManager
 {
     Task<IEnumerable<OrderDTO>?> GetAllOrdersAsync(CancellationToken cancel = default);

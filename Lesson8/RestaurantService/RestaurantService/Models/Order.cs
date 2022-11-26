@@ -2,6 +2,7 @@
 
 namespace RestaurantService.Models;
 
+/// <summary>Класс модель заказа</summary>
 public class Order : Entity
 {
     public int ClientId { get; set; }

@@ -6,6 +6,7 @@ using RestaurantService.Services.Repository;
 
 namespace RestaurantService.Infrastructure;
 
+/// <summary>Класс расширения для регистрации сервисов</summary>
 public static class ServiceCollectionsExtensions
 {
     /// <summary>

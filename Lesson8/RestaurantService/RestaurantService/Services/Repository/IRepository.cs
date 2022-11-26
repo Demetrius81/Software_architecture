@@ -2,6 +2,10 @@
 
 namespace RestaurantService.Services.Repository;
 
+/// <summary>
+/// Интерфейс репозитория
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public interface IRepositoryAsync<T> where T : Entity
 {
     Task<IEnumerable<T>> GetAllAsync(CancellationToken cancel = default);

@@ -4,6 +4,9 @@ using RestaurantService.Services.Db;
 
 namespace RestaurantService.Services.Repository;
 
+/// <summary>
+/// Репозиторий заказов
+/// </summary>
 public class OrderRepository : IRepositoryAsync<Order>
 {
     private readonly BaseContext _context;

@@ -2,6 +2,7 @@
 
 namespace RestaurantService.Models;
 
+/// <summary>Класс модель клиента</summary>
 public class Client : Entity
 {
     public string FirstName { get; set; } = null!;

@@ -3,6 +3,9 @@ using RestaurantService.Models;
 
 namespace RestaurantService.Services.Db;
 
+/// <summary>
+/// Контекст базы данных
+/// </summary>
 public class BaseContext : DbContext
 {
     public DbSet<Order> Orders { get; set; }

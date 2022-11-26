@@ -4,6 +4,9 @@ using RestaurantService.Services.Repository;
 
 namespace RestaurantService.Services.Managers;
 
+/// <summary>
+/// Менеджер заказов
+/// </summary>
 public class OrderManager : IOrderManager
 {
     private readonly IRepositoryAsync<Order> _orderRepository;
@@ -11,6 +14,13 @@ public class OrderManager : IOrderManager
     private readonly IRepositoryAsync<Client> _clientRepository;
     private readonly ILogger<OrderManager> _logger;
 
+    /// <summary>
+    /// Конструктор класса
+    /// </summary>
+    /// <param name="orderRepository"></param>
+    /// <param name="tableRepository"></param>
+    /// <param name="clientRepository"></param>
+    /// <param name="logger"></param>
     public OrderManager(
         IRepositoryAsync<Order> orderRepository,
         IRepositoryAsync<Table> tableRepository,
@@ -24,7 +34,12 @@ public class OrderManager : IOrderManager
         logger.LogInformation($">>>Создан объект класса {nameof(OrderManager)}");
     }
 
-
+    /// <summary>
+    /// Метод добавления заказа
+    /// </summary>
+    /// <param name="item"></param>
+    /// <param name="cancel"></param>
+    /// <returns></returns>
     public async Task<int> AddOrderAsync(OrderDTO item, CancellationToken cancel = default)
     {
         var order = new Order
@@ -40,11 +55,12 @@ public class OrderManager : IOrderManager
         return result;
     }
 
-    public Task<int> AddOrderAsync(Order item, CancellationToken cancel = default)
-    {
-        throw new NotImplementedException();
-    }
-
+    /// <summary>
+    /// Метод удаления заказа
+    /// </summary>
+    /// <param name="item"></param>
+    /// <param name="cancel"></param>
+    /// <returns></returns>    
     public async Task<bool> DeleteOrderAsync(OrderDTO item, CancellationToken cancel = default)
     {
         var order = new Order
@@ -58,11 +74,11 @@ public class OrderManager : IOrderManager
         return await _orderRepository.DeleteAsync(order, cancel);
     }
 
-    public Task<bool> DeleteOrderAsync(Order item, CancellationToken cancel = default)
-    {
-        throw new NotImplementedException();
-    }
-
+    /// <summary>
+    /// Метод получения списка заказов
+    /// </summary>
+    /// <param name="cancel"></param>
+    /// <returns></returns>
     public async Task<IEnumerable<OrderDTO>?> GetAllOrdersAsync(CancellationToken cancel = default)
     {
         var orders = await _orderRepository.GetAllAsync(cancel).ConfigureAwait(false);
@@ -83,11 +99,23 @@ public class OrderManager : IOrderManager
         return result;
     }
 
+    /// <summary>
+    /// Метод получения количества заказов
+    /// </summary>
+    /// <param name="cancel"></param>
+    /// <returns></returns>
+    /// <exception cref="NotImplementedException"></exception>
     public async Task<int> GetCountOrdersAsync(CancellationToken cancel = default)
     {
-        return await _orderRepository.GetCountAsync(cancel);
+        return await _orderRepository.GetCountAsync(cancel).ConfigureAwait(false);
     }
 
+    /// <summary>
+    /// Метод получения заказа по номеру
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="cancel"></param>
+    /// <returns></returns>
     public async Task<OrderDTO?> GetOrderByIdAsync(int id, CancellationToken cancel = default)
     {
         var order = await _orderRepository.GetByIdAsync(id, cancel).ConfigureAwait(false);
@@ -103,6 +131,12 @@ public class OrderManager : IOrderManager
         return orderDTO;
     }
 
+    /// <summary>
+    /// Метод изменения заказа
+    /// </summary>
+    /// <param name="item"></param>
+    /// <param name="cancel"></param>
+    /// <returns></returns>
     public async Task<bool> UpdateOrderAsync(OrderDTO item, CancellationToken cancel = default)
     {
         var order = new Order
@@ -114,5 +148,5 @@ public class OrderManager : IOrderManager
         };
 
         return await _orderRepository.UpdateAsync(order, cancel);
-    }    
+    }
 }
