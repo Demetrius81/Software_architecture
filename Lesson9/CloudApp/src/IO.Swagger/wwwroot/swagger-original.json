@@ -1,0 +1,286 @@
+{
+  "openapi" : "3.0.3",
+  "info" : {
+    "title" : "Заказ на ресурсы облака",
+    "version" : "0.0.1"
+  },
+  "servers" : [ {
+    "url" : "http://localhost:9669/api/v1/",
+    "description" : "Dev server"
+  } ],
+  "paths" : {
+    "/clouds" : {
+      "get" : {
+        "tags" : [ "Clouds" ],
+        "summary" : "Метод получения списка заказов на облако",
+        "operationId" : "getAllClouds",
+        "responses" : {
+          "200" : {
+            "description" : "Успешный ответ со списком заказов в облаке",
+            "content" : {
+              "adplication/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Clouds"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Ошибка ввода данных",
+            "content" : {
+              "adplication/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Ошибка сервера",
+            "content" : {
+              "adplication/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Все остальное",
+            "content" : {
+              "adplication/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Clouds" ],
+        "summary" : "Метод создания заказа на облако",
+        "operationId" : "createCloud",
+        "requestBody" : {
+          "content" : {
+            "adplication/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Error"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Успешный ответ создания заказ на облако",
+            "content" : {
+              "adplication/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Cloud"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Ошибка ввода данных",
+            "content" : {
+              "adplication/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Ошибка сервера",
+            "content" : {
+              "adplication/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Все остальное",
+            "content" : {
+              "adplication/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/clouds/{cloud_id}" : {
+      "get" : {
+        "tags" : [ "Clouds" ],
+        "summary" : "Метод получения заказа на облако по ID",
+        "operationId" : "getCloudById",
+        "parameters" : [ {
+          "name" : "cloud_id",
+          "in" : "path",
+          "description" : "Идентификатор заказа облака",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "f102b615"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Успешный ответ заказом облака по ID",
+            "content" : {
+              "adplication/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Cloud"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Ошибка ввода данных",
+            "content" : {
+              "adplication/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Ошибка сервера",
+            "content" : {
+              "adplication/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Все остальное",
+            "content" : {
+              "adplication/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Clouds" ],
+        "summary" : "Метод отмены заказа на облако по ID",
+        "operationId" : "cencelCloudById",
+        "parameters" : [ {
+          "name" : "cloud_id",
+          "in" : "path",
+          "description" : "Идентификатор заказа облака",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "f102b615"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Успешный ответ заказом облака по ID",
+            "content" : {
+              "adplication/json" : { }
+            }
+          },
+          "400" : {
+            "description" : "Ошибка ввода данных",
+            "content" : {
+              "adplication/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Ошибка сервера",
+            "content" : {
+              "adplication/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Все остальное",
+            "content" : {
+              "adplication/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Cloud" : {
+        "required" : [ "OS", "RAM", "id_client" ],
+        "type" : "object",
+        "properties" : {
+          "cloud_id" : {
+            "type" : "string",
+            "example" : "f102b615"
+          },
+          "id_client" : {
+            "type" : "string",
+            "example" : "f102b615"
+          },
+          "OS" : {
+            "type" : "string",
+            "description" : "Операционная система сервера",
+            "enum" : [ "Windows", "Linux" ]
+          },
+          "RAM" : {
+            "type" : "string",
+            "example" : "128"
+          }
+        },
+        "example" : {
+          "OS" : "Windows",
+          "id_client" : "f102b615",
+          "cloud_id" : "f102b615",
+          "RAM" : "128"
+        }
+      },
+      "Clouds" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Cloud"
+        }
+      },
+      "Error" : {
+        "required" : [ "code", "message" ],
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "integer"
+          },
+          "message" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}
