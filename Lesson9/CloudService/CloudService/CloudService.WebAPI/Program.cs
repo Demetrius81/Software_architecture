@@ -1,19 +1,32 @@
+using CloudService.DAL.Context;
+using Microsoft.EntityFrameworkCore;
+
 internal class Program
 {
     private static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
+        var connectionType = builder.Configuration["DataBase"];
+        var connectionString = builder.Configuration.GetConnectionString(connectionType);
+
+        switch (connectionType)
+        {
+            case "SqLite":
+                builder.Services.AddDbContext<CloudServiceDb>(opt => opt.UseSqlite(connectionString, o => o.MigrationsAssembly("CloudService.DAL.SqLite")));
+                break;
+            case "SqlServer":
+                //Здесь можно добавлять разные базы данных в разных сборках по аналогии с SqLite.
+                break;
+        }
+
 
         builder.Services.AddControllers();
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
         var app = builder.Build();
 
-        // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();

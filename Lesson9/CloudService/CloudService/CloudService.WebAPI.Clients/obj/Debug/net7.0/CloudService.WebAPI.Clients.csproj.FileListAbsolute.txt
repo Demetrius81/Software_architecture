@@ -1,0 +1,12 @@
+D:\проекты\GB\Software_architecture\Lesson9\CloudService\CloudService\CloudService.WebAPI.Clients\bin\Debug\net7.0\CloudService.WebAPI.Clients.deps.json
+D:\проекты\GB\Software_architecture\Lesson9\CloudService\CloudService\CloudService.WebAPI.Clients\bin\Debug\net7.0\CloudService.WebAPI.Clients.dll
+D:\проекты\GB\Software_architecture\Lesson9\CloudService\CloudService\CloudService.WebAPI.Clients\bin\Debug\net7.0\CloudService.WebAPI.Clients.pdb
+D:\проекты\GB\Software_architecture\Lesson9\CloudService\CloudService\CloudService.WebAPI.Clients\obj\Debug\net7.0\CloudService.WebAPI.Clients.csproj.AssemblyReference.cache
+D:\проекты\GB\Software_architecture\Lesson9\CloudService\CloudService\CloudService.WebAPI.Clients\obj\Debug\net7.0\CloudService.WebAPI.Clients.GeneratedMSBuildEditorConfig.editorconfig
+D:\проекты\GB\Software_architecture\Lesson9\CloudService\CloudService\CloudService.WebAPI.Clients\obj\Debug\net7.0\CloudService.WebAPI.Clients.AssemblyInfoInputs.cache
+D:\проекты\GB\Software_architecture\Lesson9\CloudService\CloudService\CloudService.WebAPI.Clients\obj\Debug\net7.0\CloudService.WebAPI.Clients.AssemblyInfo.cs
+D:\проекты\GB\Software_architecture\Lesson9\CloudService\CloudService\CloudService.WebAPI.Clients\obj\Debug\net7.0\CloudService.WebAPI.Clients.csproj.CoreCompileInputs.cache
+D:\проекты\GB\Software_architecture\Lesson9\CloudService\CloudService\CloudService.WebAPI.Clients\obj\Debug\net7.0\CloudService.WebAPI.Clients.dll
+D:\проекты\GB\Software_architecture\Lesson9\CloudService\CloudService\CloudService.WebAPI.Clients\obj\Debug\net7.0\refint\CloudService.WebAPI.Clients.dll
+D:\проекты\GB\Software_architecture\Lesson9\CloudService\CloudService\CloudService.WebAPI.Clients\obj\Debug\net7.0\CloudService.WebAPI.Clients.pdb
+D:\проекты\GB\Software_architecture\Lesson9\CloudService\CloudService\CloudService.WebAPI.Clients\obj\Debug\net7.0\ref\CloudService.WebAPI.Clients.dll
