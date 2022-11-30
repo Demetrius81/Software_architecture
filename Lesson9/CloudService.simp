@@ -6,10 +6,19 @@
     <description />
   </meta>
   <counters models="1">
-    <entity-names />
+    <entity-names>
+      <counter>
+        <item-type type-id="class" type="Class" />
+        <value>1</value>
+      </counter>
+    </entity-names>
     <entity-ids>
       <counter>
         <item-type type-id="group" type="Group" />
+        <value>3</value>
+      </counter>
+      <counter>
+        <item-type type-id="class" type="Class" />
         <value>2</value>
       </counter>
     </entity-ids>
@@ -79,12 +88,20 @@
           </authors>
           <description />
           <creation-date>11/29/2022 19:10:25</creation-date>
-          <change-date>11/29/2022 19:10:25</change-date>
+          <change-date>11/29/2022 19:12:32</change-date>
           <revision-count>0</revision-count>
           <version />
         </meta>
-        <abstract-items />
-        <layer id="1d88932929074dd3a0c161363692c864" name="Default" visible="true" enabled="true" locked="false" />
+        <abstract-items>
+          <item id="ac4dd432772c4858acb6dad8f4943fb0" cid="C001" type="class" name="Class1" creator="" creation-date="11/29/2022 19:12:32" />
+        </abstract-items>
+        <layer id="1d88932929074dd3a0c161363692c864" name="Default" visible="true" enabled="true" locked="false">
+          <item id="ac4dd432772c4858acb6dad8f4943fb0" iid="b331a92a28734c2dbf548fa3ff21dc9e" show-fields="true" creation-date="11/29/2022 19:12:32" order-index="0" type="entity">
+            <layout ax="367" ay="176" awidth="140" aheight="160" x="367" y="176" width="140" height="160" />
+            <classifier />
+            <class />
+          </item>
+        </layer>
       </diagram>
     </model>
   </models>
