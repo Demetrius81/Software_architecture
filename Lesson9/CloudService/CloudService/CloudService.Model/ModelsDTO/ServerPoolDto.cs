@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CloudService.Model;
-internal class Client
+namespace CloudService.Model.ModelsDTO;
+internal class ServerPoolDto
 {
 }

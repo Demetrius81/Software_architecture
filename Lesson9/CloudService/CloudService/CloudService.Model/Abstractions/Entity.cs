@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CloudService.Model.Abstractions;
-internal class Entity
+public class Entity : IEntity
 {
+    public int Id { get; set; }
 }

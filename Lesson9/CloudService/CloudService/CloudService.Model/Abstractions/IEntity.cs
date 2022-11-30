@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CloudService.Model.Abstractions;
-internal interface IEntity
+public interface IEntity
 {
+    public int Id { get; set; }
 }
