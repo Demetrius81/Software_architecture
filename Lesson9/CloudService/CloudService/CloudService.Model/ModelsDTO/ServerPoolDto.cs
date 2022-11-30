@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CloudService.Model.ModelsDTO;
-internal class ServerPoolDto
+public class ServerPoolDto
 {
+    public Server? CurrentServer { get; set; }
 }
