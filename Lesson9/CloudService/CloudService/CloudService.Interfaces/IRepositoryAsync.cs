@@ -1,6 +1,5 @@
-﻿using CloudService.Model.Abstractions;
-
-namespace CloudService.WebAPI.Services.Interfaces;
+﻿
+namespace CloudService.Interfaces;
 
 public interface IRepositoryAsync<T> where T : class, IEntity
 {

@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CloudService.DAL.SqLite\CloudService.DAL.SqLite.csproj" />
     <ProjectReference Include="..\CloudService.DAL\CloudService.DAL.csproj" />
+    <ProjectReference Include="..\CloudService.Interfaces\CloudService.Interfaces.csproj" />
     <ProjectReference Include="..\CloudService.Model\CloudService.Model.csproj" />
   </ItemGroup>
 

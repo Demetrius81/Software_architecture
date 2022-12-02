@@ -4,7 +4,7 @@ using CloudService.WebAPI.Infrastructure.Extensions;
 
 internal class Program
 {
-    private static async void Main(string[] args)
+    private static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 

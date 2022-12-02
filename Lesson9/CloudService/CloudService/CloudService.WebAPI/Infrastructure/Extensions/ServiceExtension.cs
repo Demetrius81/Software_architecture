@@ -10,8 +10,8 @@ internal static class ServiceExtension
 {
     internal static WebApplicationBuilder DbRegister(this WebApplicationBuilder builder)
     {
-        var connectionType = builder.Configuration["DataBase"];
-        var connectionString = builder.Configuration.GetConnectionString(connectionType);
+        string connectionType = builder.Configuration["DataBase"] ?? string.Empty;
+        string connectionString = builder.Configuration.GetConnectionString(connectionType) ?? string.Empty;
 
         switch (connectionType)
         {
@@ -21,10 +21,9 @@ internal static class ServiceExtension
             case "SqlServer":
                 //Здесь можно добавлять разные базы данных в разных сборках по аналогии с SqLite.
                 break;
+            default:
+                break;
         }
-
-
-
 
         return builder;
     }

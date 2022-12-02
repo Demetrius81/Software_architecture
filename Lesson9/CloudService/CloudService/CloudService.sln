@@ -3,19 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudService.Model", "CloudService.Model\CloudService.Model.csproj", "{FD54BEEC-F6D2-4DE6-AF62-379D6DBBDFE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudService.Model", "CloudService.Model\CloudService.Model.csproj", "{FD54BEEC-F6D2-4DE6-AF62-379D6DBBDFE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudService.DAL", "CloudService.DAL\CloudService.DAL.csproj", "{C6418F38-0993-45F2-B77D-74666F9163D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudService.DAL", "CloudService.DAL\CloudService.DAL.csproj", "{C6418F38-0993-45F2-B77D-74666F9163D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudService.DAL.SqLite", "CloudService.DAL.SqLite\CloudService.DAL.SqLite.csproj", "{25BF12EA-E52E-4452-A1BE-577556CBA352}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudService.DAL.SqLite", "CloudService.DAL.SqLite\CloudService.DAL.SqLite.csproj", "{25BF12EA-E52E-4452-A1BE-577556CBA352}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudService.WebAPI", "CloudService.WebAPI\CloudService.WebAPI.csproj", "{17492340-920F-4AB1-A444-A4B344068942}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudService.WebAPI", "CloudService.WebAPI\CloudService.WebAPI.csproj", "{17492340-920F-4AB1-A444-A4B344068942}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudService.WebAPI.Clients", "CloudService.WebAPI.Clients\CloudService.WebAPI.Clients.csproj", "{9A882123-BF60-4445-B0F6-FDE2F753B395}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudService.WebAPI.Clients", "CloudService.WebAPI.Clients\CloudService.WebAPI.Clients.csproj", "{9A882123-BF60-4445-B0F6-FDE2F753B395}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BB259D1F-3D28-4D27-BD25-3C9922C0F8EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudService.TestConsole", "CloudService.TestConsole\CloudService.TestConsole.csproj", "{2174AFEE-9F4B-4FE7-9F80-1A98C3799C36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudService.TestConsole", "CloudService.TestConsole\CloudService.TestConsole.csproj", "{2174AFEE-9F4B-4FE7-9F80-1A98C3799C36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudService.Interfaces", "CloudService.Interfaces\CloudService.Interfaces.csproj", "{398B1967-D88C-48A9-B091-EA3F484E40EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{2174AFEE-9F4B-4FE7-9F80-1A98C3799C36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2174AFEE-9F4B-4FE7-9F80-1A98C3799C36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2174AFEE-9F4B-4FE7-9F80-1A98C3799C36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{398B1967-D88C-48A9-B091-EA3F484E40EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{398B1967-D88C-48A9-B091-EA3F484E40EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{398B1967-D88C-48A9-B091-EA3F484E40EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{398B1967-D88C-48A9-B091-EA3F484E40EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

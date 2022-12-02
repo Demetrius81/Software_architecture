@@ -1,6 +1,5 @@
 ﻿using CloudService.DAL.Context;
-using CloudService.Model.Abstractions;
-using CloudService.WebAPI.Services.Interfaces;
+using CloudService.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace CloudService.WebAPI.Services.Repository;

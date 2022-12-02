@@ -10,3 +10,6 @@ D:\проекты\GB\Software_architecture\Lesson9\CloudService\CloudService\Clo
 D:\проекты\GB\Software_architecture\Lesson9\CloudService\CloudService\CloudService.WebAPI.Clients\obj\Debug\net7.0\refint\CloudService.WebAPI.Clients.dll
 D:\проекты\GB\Software_architecture\Lesson9\CloudService\CloudService\CloudService.WebAPI.Clients\obj\Debug\net7.0\CloudService.WebAPI.Clients.pdb
 D:\проекты\GB\Software_architecture\Lesson9\CloudService\CloudService\CloudService.WebAPI.Clients\obj\Debug\net7.0\ref\CloudService.WebAPI.Clients.dll
+D:\проекты\GB\Software_architecture\Lesson9\CloudService\CloudService\CloudService.WebAPI.Clients\bin\Debug\net7.0\CloudService.Interfaces.dll
+D:\проекты\GB\Software_architecture\Lesson9\CloudService\CloudService\CloudService.WebAPI.Clients\bin\Debug\net7.0\CloudService.Interfaces.pdb
+D:\проекты\GB\Software_architecture\Lesson9\CloudService\CloudService\CloudService.WebAPI.Clients\obj\Debug\net7.0\CloudService.WebAPI.Clients.csproj.CopyComplete

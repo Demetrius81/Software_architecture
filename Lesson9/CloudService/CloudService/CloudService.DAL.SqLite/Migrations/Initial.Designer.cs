@@ -11,7 +11,7 @@ namespace CloudService.DAL.SqLite.Migrations
 {
     [DbContext(typeof(CloudServiceDb))]
     [Migration("20221130105256_initial")]
-    partial class initial
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

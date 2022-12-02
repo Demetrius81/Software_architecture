@@ -44,6 +44,7 @@ public class CloudDbInitializer
 
         if (!await _db.Clients.AnyAsync(cancel))
         {
+            _logger.LogInformation(">>> Таблица клиентов отсутствует, добавляю...");
             var clients = Enumerable.Range(1, 10)
                 .Select(x => new Client
                 {
@@ -58,9 +59,14 @@ public class CloudDbInitializer
             _logger.LogInformation(">>> Таблица клиентов добавлена");
             await _db.SaveChangesAsync(cancel);
         }
+        else
+        {
+            _logger.LogInformation(">>> Таблица клиентов уже находится в БД");
+        }
 
         if (!await _db.IpAddresses.AnyAsync(cancel))
         {
+            _logger.LogInformation(">>> Таблица IP адресов отсутствует, добавляю...");
             var ipAddresses = Enumerable.Range(1, 254)
                 .Select(x => new IpAddress
                 {
@@ -71,8 +77,14 @@ public class CloudDbInitializer
             _logger.LogInformation(">>> Таблица IP адресов добавлена");
             await _db.SaveChangesAsync(cancel);
         }
+        else
+        {
+            _logger.LogInformation(">>> Таблица IP адресов уже находится в БД");
+        }
+
         if (!await _db.Servers.AnyAsync(cancel))
         {
+            _logger.LogInformation(">>> Таблица серверов отсутствует, добавляю...");
             var servers = Enumerable.Range(1, 20)
                 .Select(x => new Server
                 {
@@ -86,9 +98,14 @@ public class CloudDbInitializer
             _logger.LogInformation(">>> Таблица серверов добавлена");
             await _db.SaveChangesAsync(cancel);
         }
+        else
+        {
+            _logger.LogInformation(">>> Таблица серверов уже находится в БД");
+        }
 
         if (!await _db.ServerPools.AnyAsync(cancel))
         {
+            _logger.LogInformation(">>> Таблица пул серверов отсутствует, добавляю...");
             var serverPools = Enumerable.Range(1, 20)
                 .Select(x => new ServerPool
                 {
@@ -99,9 +116,14 @@ public class CloudDbInitializer
             _logger.LogInformation(">>> Таблица пул серверов добавлена");
             await _db.SaveChangesAsync(cancel);
         }
+        else
+        {
+            _logger.LogInformation(">>> Таблица пул серверов уже находится в БД");
+        }
 
         if (!await _db.Clouds.AnyAsync(cancel))
         {
+            _logger.LogInformation(">>> Таблица облако отсутствует, добавляю...");
             var clouds = Enumerable.Range(1, 5)
                 .Select(x => new Cloud
                 {
@@ -117,6 +139,10 @@ public class CloudDbInitializer
             await _db.Clouds.AddRangeAsync(clouds, cancel);
             _logger.LogInformation(">>> Таблица облако добавлена");
             await _db.SaveChangesAsync(cancel);
+        }
+        else
+        {
+            _logger.LogInformation(">>> Таблица облако уже находится в БД");
         }
     }
 }

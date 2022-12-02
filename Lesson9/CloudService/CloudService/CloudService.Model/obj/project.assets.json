@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {}
+    "net7.0": {
+      "CloudService.Interfaces/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/CloudService.Interfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CloudService.Interfaces.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "CloudService.Interfaces/1.0.0": {
+      "type": "project",
+      "path": "../CloudService.Interfaces/CloudService.Interfaces.csproj",
+      "msbuildProject": "../CloudService.Interfaces/CloudService.Interfaces.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net7.0": []
+    "net7.0": [
+      "CloudService.Interfaces >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Shizi\\.nuget\\packages\\": {},
@@ -41,7 +60,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\проекты\\GB\\Software_architecture\\Lesson9\\CloudService\\CloudService\\CloudService.Interfaces\\CloudService.Interfaces.csproj": {
+              "projectPath": "D:\\проекты\\GB\\Software_architecture\\Lesson9\\CloudService\\CloudService\\CloudService.Interfaces\\CloudService.Interfaces.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
