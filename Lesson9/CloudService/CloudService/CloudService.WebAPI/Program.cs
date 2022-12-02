@@ -1,5 +1,5 @@
-using CloudService.DAL.Context;
-using Microsoft.EntityFrameworkCore;
+using CloudService.WebAPI.Infrastructure.Extensions;
+
 
 internal class Program
 {
@@ -7,25 +7,10 @@ internal class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        var connectionType = builder.Configuration["DataBase"];
-        var connectionString = builder.Configuration.GetConnectionString(connectionType);
-
-        switch (connectionType)
-        {
-            case "SqLite":
-                builder.Services.AddDbContext<CloudServiceDb>(opt => opt.UseSqlite(connectionString, o => o.MigrationsAssembly("CloudService.DAL.SqLite")));
-                break;
-            case "SqlServer":
-                //Здесь можно добавлять разные базы данных в разных сборках по аналогии с SqLite.
-                break;
-        }
-
-
-        builder.Services.AddControllers();
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
-
-        var app = builder.Build();
+        var app = builder
+            .DbRegister()
+            .ServiceRegister()
+            .Build();
 
         if (app.Environment.IsDevelopment())
         {
@@ -34,6 +19,8 @@ internal class Program
         }
 
         app.UseAuthorization();
+
+        app.UseRouting();//
 
         app.MapControllers();
 
