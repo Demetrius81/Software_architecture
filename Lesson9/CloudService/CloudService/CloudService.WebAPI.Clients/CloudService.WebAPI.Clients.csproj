@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CloudService.Interfaces\CloudService.Interfaces.csproj" />
+    <ProjectReference Include="..\CloudService.Model\CloudService.Model.csproj" />
   </ItemGroup>
 
 </Project>

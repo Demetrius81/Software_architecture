@@ -1,6 +1,6 @@
 ﻿using CloudService.DAL;
 using CloudService.DAL.Context;
-using CloudService.WebAPI.Services.Interfaces;
+using CloudService.Interfaces;
 using CloudService.WebAPI.Services.Repository;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,8 +10,8 @@ internal static class ServiceExtension
 {
     internal static WebApplicationBuilder DbRegister(this WebApplicationBuilder builder)
     {
-        string connectionType = builder.Configuration["DataBase"] ?? string.Empty;
-        string connectionString = builder.Configuration.GetConnectionString(connectionType) ?? string.Empty;
+        string connectionType = builder.Configuration["DataBase"] ?? throw new ArgumentException("Не выбрана база данных для работы");
+        string connectionString = builder.Configuration.GetConnectionString(connectionType) ?? throw new ArgumentException("Не задана строка подключения базы данных");
 
         switch (connectionType)
         {

@@ -142,6 +142,19 @@
         "runtime": {
           "bin/placeholder/CloudService.Interfaces.dll": {}
         }
+      },
+      "CloudService.Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "CloudService.Interfaces": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CloudService.Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CloudService.Model.dll": {}
+        }
       }
     }
   },
@@ -390,11 +403,17 @@
       "type": "project",
       "path": "../CloudService.Interfaces/CloudService.Interfaces.csproj",
       "msbuildProject": "../CloudService.Interfaces/CloudService.Interfaces.csproj"
+    },
+    "CloudService.Model/1.0.0": {
+      "type": "project",
+      "path": "../CloudService.Model/CloudService.Model.csproj",
+      "msbuildProject": "../CloudService.Model/CloudService.Model.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
       "CloudService.Interfaces >= 1.0.0",
+      "CloudService.Model >= 1.0.0",
       "Microsoft.Extensions.Http >= 7.0.0"
     ]
   },
@@ -435,6 +454,9 @@
           "projectReferences": {
             "D:\\проекты\\GB\\Software_architecture\\Lesson9\\CloudService\\CloudService\\CloudService.Interfaces\\CloudService.Interfaces.csproj": {
               "projectPath": "D:\\проекты\\GB\\Software_architecture\\Lesson9\\CloudService\\CloudService\\CloudService.Interfaces\\CloudService.Interfaces.csproj"
+            },
+            "D:\\проекты\\GB\\Software_architecture\\Lesson9\\CloudService\\CloudService\\CloudService.Model\\CloudService.Model.csproj": {
+              "projectPath": "D:\\проекты\\GB\\Software_architecture\\Lesson9\\CloudService\\CloudService\\CloudService.Model\\CloudService.Model.csproj"
             }
           }
         }
