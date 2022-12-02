@@ -1,4 +1,7 @@
-﻿using CloudService.DAL.Context;
+﻿using CloudService.DAL;
+using CloudService.DAL.Context;
+using CloudService.WebAPI.Services.Interfaces;
+using CloudService.WebAPI.Services.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace CloudService.WebAPI.Infrastructure.Extensions;
@@ -19,11 +22,17 @@ internal static class ServiceExtension
                 //Здесь можно добавлять разные базы данных в разных сборках по аналогии с SqLite.
                 break;
         }
+
+
+
+
         return builder;
     }
 
     internal static WebApplicationBuilder ServiceRegister(this WebApplicationBuilder builder)
     {
+        builder.Services.AddScoped<CloudDbInitializer>();
+        builder.Services.AddScoped(typeof(IRepositoryAsync<>), typeof(EntityRepositoryAsync<>));
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
