@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CloudService.WebAPI.Clients;
-public class CloudsClient : IRepositoryAsync<Cloud>
+public class CloudsClient : IRepositoryAsync<CloudDto>
 {
     private readonly HttpClient _client;
     private readonly ILogger<CloudsClient> _logger;
@@ -20,7 +20,7 @@ public class CloudsClient : IRepositoryAsync<Cloud>
         this._logger = logger;
     }
 
-    public Task<int> AddAsync(Cloud item, CancellationToken cancel = default)
+    public Task<int> AddAsync(CloudDto item, CancellationToken cancel = default)
     {
         throw new NotImplementedException();
     }
@@ -33,15 +33,15 @@ public class CloudsClient : IRepositoryAsync<Cloud>
         return result;
     }
 
-    public Task<bool> DeleteAsync(Cloud item, CancellationToken cancel = default)
+    public Task<bool> DeleteAsync(CloudDto item, CancellationToken cancel = default)
     {
         throw new NotImplementedException();
     }
 
-    public async Task<IEnumerable<Cloud>> GetAllAsync(CancellationToken cancel = default)
+    public async Task<IEnumerable<CloudDto>> GetAllAsync(CancellationToken cancel = default)
     {
         var clouds = await _client
-            .GetFromJsonAsync<IEnumerable<Cloud>>(""/*адрес*/, cancel)
+            .GetFromJsonAsync<IEnumerable<CloudDto>>(""/*адрес*/, cancel)
             .ConfigureAwait(false);
 
         if (clouds is null)
@@ -50,10 +50,10 @@ public class CloudsClient : IRepositoryAsync<Cloud>
         return clouds;
     }
 
-    public async Task<Cloud?> GetByIdAsync(int id, CancellationToken cancel = default)
+    public async Task<CloudDto?> GetByIdAsync(int id, CancellationToken cancel = default)
     {
         var cloud = await _client
-            .GetFromJsonAsync<Cloud>("")
+            .GetFromJsonAsync<CloudDto>("")
             .ConfigureAwait(false);
 
         if (cloud is null)
@@ -62,7 +62,7 @@ public class CloudsClient : IRepositoryAsync<Cloud>
         return cloud;
     }
 
-    public Task<bool> UpdateAsync(Cloud item, CancellationToken cancel = default)
+    public Task<bool> UpdateAsync(CloudDto item, CancellationToken cancel = default)
     {
         throw new NotImplementedException();
     }

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CloudService.Model.Abstractions;
 
 namespace CloudService.Model.ModelsDTO;
-public class ServerPoolDto
+public class ServerPoolDto : Entity
 {
     public Server? CurrentServer { get; set; }
 }

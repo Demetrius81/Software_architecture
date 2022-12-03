@@ -42,3 +42,6 @@ Lesson9/CloudService/CloudService/CloudService.Model/bin
 Lesson9/CloudService/CloudService/CloudService.TestConsole/bin
 Lesson9/CloudService/CloudService/CloudService.WebAPI/bin
 Lesson9/CloudService/CloudService/CloudService.TestConsole/obj
+Lesson9/CloudService/CloudService/CloudService.Interfaces/obj
+Lesson9/CloudService/CloudService/CloudService.Model/obj
+Lesson9/CloudService/CloudService/CloudService.WebAPI.Clients/obj

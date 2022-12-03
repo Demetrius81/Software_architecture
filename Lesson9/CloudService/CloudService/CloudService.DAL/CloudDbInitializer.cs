@@ -125,7 +125,7 @@ public class CloudDbInitializer
         {
             _logger.LogInformation(">>> Таблица облако отсутствует, добавляю...");
             var clouds = Enumerable.Range(1, 5)
-                .Select(x => new Cloud
+                .Select(x => new CloudDto
                 {
                     ClientId = rnd.Next(1, 10),
                     IpAddressId = rnd.Next(1, 254),
