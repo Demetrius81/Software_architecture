@@ -18,6 +18,7 @@ public class CloudController : ControllerBase
         this._manager = manager;
         this._logger = logger;
     }
+
     /// <summary>
     /// Метод отмены заказа на облако по ID
     /// </summary>
@@ -33,8 +34,41 @@ public class CloudController : ControllerBase
     [SwaggerResponse(statusCode: 400, description: "Ошибка ввода данных")]
     [SwaggerResponse(statusCode: 500, description: "Ошибка сервера")]
     [SwaggerResponse(statusCode: 0, description: "Все остальное")]
-    public async Task<IActionResult> DeleteCloudById([FromBody][Required] CloudDto cloud, CancellationToken cancel = default)
+    public async Task<IActionResult> DeleteCloud([FromBody][Required] CloudDto cloud, CancellationToken cancel = default)
     {
+        if (cloud is null ||
+            cloud.Id == default ||
+            cloud.Cpu == default ||
+            cloud.Os == default ||
+            cloud.Ram == default ||
+            cloud.Rom == default ||
+            cloud.CurrentIpAddress is null ||
+            cloud.CurrentClient is null ||
+            cloud.CurrentServerPool is null)
+            return BadRequest();
+        var result = await _manager.DeleteAsync(cloud, cancel).ConfigureAwait(true);
+        if (!result) return NotFound();
+        return Ok(result);
+    }
+
+    /// <summary>
+    /// Метод отмены заказа на облако по ID
+    /// </summary>
+    /// <param name="cloudId">Идентификатор заказа облака</param>
+    /// <response code="200">Успешный ответ заказом облака по ID</response>
+    /// <response code="400">Ошибка ввода данных</response>
+    /// <response code="500">Ошибка сервера</response>
+    /// <response code="0">Все остальное</response>
+    [HttpDelete]
+    [Route("api/v1/delete/id={id}")]
+    [SwaggerOperation("CencelCloudById")]
+    [SwaggerResponse(statusCode: 200, description: "Заказ на облако отменен")]
+    [SwaggerResponse(statusCode: 400, description: "Ошибка ввода данных")]
+    [SwaggerResponse(statusCode: 500, description: "Ошибка сервера")]
+    [SwaggerResponse(statusCode: 0, description: "Все остальное")]
+    public async Task<IActionResult> DeleteCloudById([FromRoute][Required] int id, CancellationToken cancel = default)
+    {
+        var cloud = await _manager.GetByIdAsync(id, cancel).ConfigureAwait(true);
         if (cloud is null ||
             cloud.Id == default ||
             cloud.Cpu == default ||

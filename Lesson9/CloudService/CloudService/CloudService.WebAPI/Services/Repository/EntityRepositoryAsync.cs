@@ -30,13 +30,13 @@ internal class EntityRepositoryAsync<T> : IRepositoryAsync<T> where T : class, I
     }
 
     public async Task<bool> DeleteAsync(T item, CancellationToken cancel = default)
-    {
-        if (!await _db.Set<T>().AnyAsync(i => i.Id == item.Id, cancel).ConfigureAwait(false)) 
+    {        
+        var dbItem = await _db.Set<T>().FirstOrDefaultAsync(x => x.Id == item.Id, cancel).ConfigureAwait(false);
+        if (dbItem is null)
             return false;
-        var result = _db.Set<T>().Remove(item);
+        _db.Entry(dbItem).State = EntityState.Deleted;
         _logger.LogInformation($">>>Удалили элемент {typeof(T)}");
-        await _db.SaveChangesAsync(cancel).ConfigureAwait(false);
-        return result.Entity is not null;
+        return await _db.SaveChangesAsync(cancel) > 0;
     }
 
     public async Task<IEnumerable<T>?> GetAllAsync(CancellationToken cancel = default)
@@ -55,9 +55,13 @@ internal class EntityRepositoryAsync<T> : IRepositoryAsync<T> where T : class, I
 
     public async Task<bool> UpdateAsync(T item, CancellationToken cancel = default)
     {
-        var result = _db.Set<T>().Update(item);
+        var dbItem = await _db.Set<T>().FirstOrDefaultAsync(x => x.Id == item.Id, cancel).ConfigureAwait(false);
+        if (dbItem is null)
+            return false;
+        dbItem = (T)item.Clone();
+        _db.Entry(dbItem).State = EntityState.Modified;
         _logger.LogInformation($">>>Изменили элемент {typeof(T)}");
         await _db.SaveChangesAsync(cancel).ConfigureAwait(false);
-        return result.Entity is not null;
+        return await _db.SaveChangesAsync(cancel).ConfigureAwait(false) > 0;
     }
 }

@@ -1,6 +1,6 @@
 ﻿
 namespace CloudService.Interfaces;
-public interface IEntity
+public interface IEntity : ICloneable
 {
     public int Id { get; set; }
 }

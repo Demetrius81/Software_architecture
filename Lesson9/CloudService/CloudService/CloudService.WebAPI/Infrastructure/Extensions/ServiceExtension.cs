@@ -1,6 +1,8 @@
 ﻿using CloudService.DAL;
 using CloudService.DAL.Context;
 using CloudService.Interfaces;
+using CloudService.Model.ModelsDTO;
+using CloudService.WebAPI.Services.Managers;
 using CloudService.WebAPI.Services.Repository;
 using Microsoft.EntityFrameworkCore;
 
@@ -32,6 +34,8 @@ internal static class ServiceExtension
     {
         builder.Services.AddScoped<CloudDbInitializer>();
         builder.Services.AddScoped(typeof(IRepositoryAsync<>), typeof(EntityRepositoryAsync<>));
+        builder.Services.AddTransient<IRepositoryAsync<CloudDto>, CloudManager>();
+        builder.Services.AddTransient<IRepositoryAsync<ServerPoolDto>, ServerPoolManager>();
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();

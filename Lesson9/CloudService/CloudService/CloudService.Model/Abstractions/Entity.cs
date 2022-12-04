@@ -26,6 +26,8 @@ public abstract class Entity : IEntity
 
     public override int GetHashCode() => Id;
 
+    public abstract object Clone();
+
     public static bool operator ==(Entity? left, Entity? right) => Equals(left, right);
 
     public static bool operator !=(Entity? left, Entity? right) => !Equals(left, right);

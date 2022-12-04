@@ -5,4 +5,6 @@ namespace CloudService.Model.ModelsDTO;
 public class ServerPoolDto : Entity
 {
     public Server? CurrentServer { get; set; }
+
+    public override object Clone() => this.MemberwiseClone();
 }

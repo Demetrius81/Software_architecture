@@ -11,4 +11,6 @@ public class CloudDto : Entity
     public int Rom { get; set; }
     public int Cpu { get; set; }
     public OperationSystem Os { get; set; }
+
+    public override object Clone() => this.MemberwiseClone();
 }
