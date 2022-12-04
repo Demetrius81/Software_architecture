@@ -39,7 +39,7 @@ internal class EntityRepositoryAsync<T> : IRepositoryAsync<T> where T : class, I
         return result.Entity is not null;
     }
 
-    public async Task<IEnumerable<T>> GetAllAsync(CancellationToken cancel = default)
+    public async Task<IEnumerable<T>?> GetAllAsync(CancellationToken cancel = default)
     {
         var items = await _db.Set<T>().ToArrayAsync(cancel).ConfigureAwait(false);
         _logger.LogInformation($">>>Получили массив всех элементов {typeof(T)}");

@@ -1,5 +1,6 @@
 ﻿using CloudService.Interfaces;
 using CloudService.Model;
+using CloudService.Model.ModelsDTO;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -20,9 +21,10 @@ public class CloudsClient : IRepositoryAsync<CloudDto>
         this._logger = logger;
     }
 
-    public Task<int> AddAsync(CloudDto item, CancellationToken cancel = default)
+    public async Task<int> AddAsync(CloudDto item, CancellationToken cancel = default)
     {
-        throw new NotImplementedException();
+        var result = await _client.PostAsJsonAsync("uri", item, cancel).ConfigureAwait(false);
+        return result.Content.ReadFromJsonAsync<int>(options: null, cancel).Result;
     }
 
     public async Task<int> CountAsync(CancellationToken cancel = default)
@@ -38,7 +40,7 @@ public class CloudsClient : IRepositoryAsync<CloudDto>
         throw new NotImplementedException();
     }
 
-    public async Task<IEnumerable<CloudDto>> GetAllAsync(CancellationToken cancel = default)
+    public async Task<IEnumerable<CloudDto>?> GetAllAsync(CancellationToken cancel = default)
     {
         var clouds = await _client
             .GetFromJsonAsync<IEnumerable<CloudDto>>(""/*адрес*/, cancel)

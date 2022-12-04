@@ -1,7 +1,6 @@
 ﻿using CloudService.Model.Abstractions;
-using System.ComponentModel;
 
-namespace CloudService.Model;
+namespace CloudService.Model.Models;
 
 public class Server : Entity
 {

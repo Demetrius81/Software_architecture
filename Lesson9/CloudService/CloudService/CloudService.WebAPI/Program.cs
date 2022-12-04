@@ -27,7 +27,7 @@ internal class Program
 
         app.UseAuthorization();
 
-        app.UseRouting();//
+        //app.UseRouting();//
 
         app.MapControllers();
 

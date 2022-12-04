@@ -1,6 +1,6 @@
 ﻿using CloudService.Interfaces;
 using CloudService.Model.ModelsDTO;
-using CloudService.Model;
+using CloudService.Model.Models;
 
 namespace CloudService.WebAPI.Services.Managers;
 
@@ -27,6 +27,11 @@ internal class CloudManager : IRepositoryAsync<CloudDto>
 
     public async Task<int> AddAsync(CloudDto item, CancellationToken cancel = default)
     {
+        if (item is null ||
+            item.CurrentIpAddress is null ||
+            item.CurrentClient is null ||
+            item.CurrentServerPool is null)
+            return -1;
         Cloud cloud = new()
         {
             ClientId = item.CurrentClient.Id,
@@ -50,6 +55,11 @@ internal class CloudManager : IRepositoryAsync<CloudDto>
 
     public async Task<bool> DeleteAsync(CloudDto item, CancellationToken cancel = default)
     {
+        if (item is null ||
+            item.CurrentIpAddress is null ||
+            item.CurrentClient is null ||
+            item.CurrentServerPool is null) 
+            return false;
         Cloud cloud = new()
         {
             Id = item.Id,
@@ -67,9 +77,11 @@ internal class CloudManager : IRepositoryAsync<CloudDto>
         return result;
     }
 
-    public async Task<IEnumerable<CloudDto>> GetAllAsync(CancellationToken cancel = default)
+    public async Task<IEnumerable<CloudDto>?> GetAllAsync(CancellationToken cancel = default)
     {
         var clouds = await _cloudRepository.GetAllAsync(cancel).ConfigureAwait(false);
+        if (clouds is null) 
+            return null;
         var cloudsDto = new List<CloudDto>();
         foreach (var cloud in clouds)
         {
@@ -94,6 +106,8 @@ internal class CloudManager : IRepositoryAsync<CloudDto>
     public async Task<CloudDto?> GetByIdAsync(int id, CancellationToken cancel = default)
     {
         var cloud = await _cloudRepository.GetByIdAsync(id, cancel).ConfigureAwait(false);
+        if (cloud is null) 
+            return null;
         var cloudDto = new CloudDto
         {
             Id = cloud.Id,
@@ -112,6 +126,11 @@ internal class CloudManager : IRepositoryAsync<CloudDto>
 
     public async Task<bool> UpdateAsync(CloudDto item, CancellationToken cancel = default)
     {
+        if (item is null ||
+            item.CurrentIpAddress is null ||
+            item.CurrentClient is null ||
+            item.CurrentServerPool is null) 
+                return false;
         Cloud cloud = new()
         {
             Id = item.Id,

@@ -1,13 +1,9 @@
 ﻿using CloudService.DAL.Context;
 using CloudService.Model;
+using CloudService.Model.Models;
+using CloudService.Model.ModelsDTO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CloudService.DAL;
 public class CloudDbInitializer
@@ -125,7 +121,7 @@ public class CloudDbInitializer
         {
             _logger.LogInformation(">>> Таблица облако отсутствует, добавляю...");
             var clouds = Enumerable.Range(1, 5)
-                .Select(x => new CloudDto
+                .Select(x => new Cloud
                 {
                     ClientId = rnd.Next(1, 10),
                     IpAddressId = rnd.Next(1, 254),
