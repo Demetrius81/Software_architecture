@@ -1,49 +1,47 @@
 ﻿using CloudService.Interfaces;
-using CloudService.Model;
 using CloudService.Model.ModelsDTO;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Json;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CloudService.WebAPI.Clients;
 public class CloudsClient : IRepositoryAsync<CloudDto>
 {
     private readonly HttpClient _client;
-    private readonly ILogger<CloudsClient> _logger;
 
-    public CloudsClient(HttpClient client, ILogger<CloudsClient> logger)
+    public CloudsClient(HttpClient client)
 	{
         this._client = client;
-        this._logger = logger;
     }
 
     public async Task<int> AddAsync(CloudDto item, CancellationToken cancel = default)
     {
-        var result = await _client.PostAsJsonAsync("uri", item, cancel).ConfigureAwait(false);
+        var result = await _client.PostAsJsonAsync("api/v1/add", item, cancel).ConfigureAwait(false);
         return result.Content.ReadFromJsonAsync<int>(options: null, cancel).Result;
     }
 
     public async Task<int> CountAsync(CancellationToken cancel = default)
     {
         var result = await _client
-            .GetFromJsonAsync<int>("")
+            .GetFromJsonAsync<int>("api/v1/getcount")
             .ConfigureAwait(false);
         return result;
     }
 
-    public Task<bool> DeleteAsync(CloudDto item, CancellationToken cancel = default)
+    public async Task<bool> DeleteAsync(CloudDto item, CancellationToken cancel = default)
     {
-        throw new NotImplementedException();
+        var result = await _client.PostAsJsonAsync("api/v1/delete", item, cancel).ConfigureAwait(false);
+        return await result.Content.ReadFromJsonAsync<bool>(options: null, cancel);
+    }
+    
+    public async Task<bool> DeleteByIdAsync(int id, CancellationToken cancel = default)
+    {
+        var result = await _client.DeleteAsync($"api/v1/delete/id={id}", cancel).ConfigureAwait(false);
+        return await result.Content.ReadFromJsonAsync<bool>(options: null, cancel);
     }
 
     public async Task<IEnumerable<CloudDto>?> GetAllAsync(CancellationToken cancel = default)
     {
         var clouds = await _client
-            .GetFromJsonAsync<IEnumerable<CloudDto>>(""/*адрес*/, cancel)
+            .GetFromJsonAsync<IEnumerable<CloudDto>>("api/v1/getall", cancel)
             .ConfigureAwait(false);
 
         if (clouds is null)
@@ -55,7 +53,7 @@ public class CloudsClient : IRepositoryAsync<CloudDto>
     public async Task<CloudDto?> GetByIdAsync(int id, CancellationToken cancel = default)
     {
         var cloud = await _client
-            .GetFromJsonAsync<CloudDto>("")
+            .GetFromJsonAsync<CloudDto>($"api/v1/getbyid/id={id}")
             .ConfigureAwait(false);
 
         if (cloud is null)
@@ -64,8 +62,9 @@ public class CloudsClient : IRepositoryAsync<CloudDto>
         return cloud;
     }
 
-    public Task<bool> UpdateAsync(CloudDto item, CancellationToken cancel = default)
+    public async Task<bool> UpdateAsync(CloudDto item, CancellationToken cancel = default)
     {
-        throw new NotImplementedException();
+        var result = await _client.PostAsJsonAsync("api/v1/update", item, cancel).ConfigureAwait(false);
+        return await result.Content.ReadFromJsonAsync<bool>(options: null, cancel);
     }
 }
