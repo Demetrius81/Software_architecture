@@ -27,7 +27,7 @@ public class CloudController : ControllerBase
     /// <response code="400">Ошибка ввода данных</response>
     /// <response code="500">Ошибка сервера</response>
     /// <response code="0">Все остальное</response>
-    [HttpDelete]
+    [HttpPost]
     [Route("api/v1/delete")]
     [SwaggerOperation("CencelCloudById")]
     [SwaggerResponse(statusCode: 200, description: "Заказ на облако отменен")]
