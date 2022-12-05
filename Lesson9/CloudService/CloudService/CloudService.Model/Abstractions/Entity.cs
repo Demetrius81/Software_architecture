@@ -17,7 +17,7 @@ public abstract class Entity : IEntity
         return ReferenceEquals(this, obj) ? true : Equals((Entity)obj);
     }
 
-    public bool Equalls(Entity? other)
+    public bool Equals(Entity? other)
     {
         if (other is null) return false;
         if (ReferenceEquals(this, other)) return true;

@@ -1,5 +1,7 @@
 ﻿using CloudService.WebAPI.Clients;
-
+/// <summary>
+/// Тестовое консольное приложение для проверки работоспособности клиента
+/// </summary>
 internal class Program
 {
     private static void Main(string[] args)
