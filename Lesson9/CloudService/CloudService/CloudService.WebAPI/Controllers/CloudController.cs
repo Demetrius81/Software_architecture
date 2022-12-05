@@ -11,7 +11,7 @@ namespace CloudService.WebAPI.Controllers;
 public class CloudController : ControllerBase
 {
     private readonly IRepositoryAsync<CloudDto> _manager;
-    private readonly ILogger<CloudController> _logger;
+    private readonly ILogger<CloudController> _logger; // не реализован
 
     public CloudController(IRepositoryAsync<CloudDto> manager, ILogger<CloudController> logger)
     {
@@ -20,7 +20,7 @@ public class CloudController : ControllerBase
     }
 
     /// <summary>
-    /// Метод отмены заказа на облако по ID
+    /// Метод отмены заказа на облако
     /// </summary>
     /// <param name="cloudId">Идентификатор заказа облака</param>
     /// <response code="200">Успешный ответ заказом облака по ID</response>
@@ -163,10 +163,10 @@ public class CloudController : ControllerBase
     }
 
     /// <summary>
-    /// Метод создания заказа на облако
+    /// Метод изменения заказа на облако
     /// </summary>
     /// <param name="body"></param>
-    /// <response code="200">Успешный ответ создания заказ на облако</response>
+    /// <response code="200">Успешный ответ изменения заказ на облако</response>
     /// <response code="400">Ошибка ввода данных</response>
     /// <response code="500">Ошибка сервера</response>
     /// <response code="0">Все остальное</response>

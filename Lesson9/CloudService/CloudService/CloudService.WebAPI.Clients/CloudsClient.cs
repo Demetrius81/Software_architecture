@@ -3,10 +3,18 @@ using CloudService.Model.ModelsDTO;
 using System.Net.Http.Json;
 
 namespace CloudService.WebAPI.Clients;
+
+/// <summary>
+/// Библиотека клиента для связи с сервисом облачных заказов, паразитирует на HttpClient. Также можно этот класс сделать расширенным и он будет работать с несколькими контроллерами.
+/// </summary>
 public class CloudsClient : IRepositoryAsync<CloudDto>
 {
     private readonly HttpClient _client;
 
+    /// <summary>
+    /// Конструктор класса
+    /// </summary>
+    /// <param name="client"></param>
     public CloudsClient(HttpClient client)
 	{
         this._client = client;

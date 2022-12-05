@@ -4,6 +4,9 @@ using CloudService.Model.Models;
 
 namespace CloudService.WebAPI.Services.Managers;
 
+/// <summary>
+/// Класс менеджера облачных заказов. Здесь собержится логика работы с объектами.
+/// </summary>
 internal class CloudManager : IRepositoryAsync<CloudDto>
 {
     private readonly IRepositoryAsync<Cloud> _cloudRepository;
@@ -12,6 +15,14 @@ internal class CloudManager : IRepositoryAsync<CloudDto>
     private readonly IRepositoryAsync<IpAddress> _ipAddressRepository;
     private readonly ILogger<CloudManager> _logger;
 
+    /// <summary>
+    /// Конструктор класса
+    /// </summary>
+    /// <param name="cloudRepository"></param>
+    /// <param name="clientRepository"></param>
+    /// <param name="serverPoolRepository"></param>
+    /// <param name="ipAddressRepository"></param>
+    /// <param name="logger"></param>
     public CloudManager(IRepositoryAsync<Cloud> cloudRepository,
                         IRepositoryAsync<Client> clientRepository,
                         IRepositoryAsync<ServerPool> serverPoolRepository,

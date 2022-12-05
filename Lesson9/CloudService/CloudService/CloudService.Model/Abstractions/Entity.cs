@@ -1,12 +1,10 @@
 ﻿using CloudService.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CloudService.Model.Abstractions;
+
+/// <summary>
+/// ААбстракция сущности
+/// </summary>
 public abstract class Entity : IEntity
 {
     public int Id { get; set; }

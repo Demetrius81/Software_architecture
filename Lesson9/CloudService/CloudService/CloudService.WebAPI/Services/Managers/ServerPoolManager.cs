@@ -4,6 +4,9 @@ using CloudService.Model.ModelsDTO;
 
 namespace CloudService.WebAPI.Services.Managers;
 
+/// <summary>
+/// Класс менеджера пула серверов
+/// </summary>
 public class ServerPoolManager : IRepositoryAsync<ServerPoolDto>
 {
     private readonly IRepositoryAsync<ServerPool> _serverPoolRepository;

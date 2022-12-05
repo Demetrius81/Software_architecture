@@ -1,6 +1,10 @@
 ﻿using CloudService.Model.Abstractions;
 
 namespace CloudService.Model.Models;
+
+/// <summary>
+/// Модель клиента
+/// </summary>
 public class Client : Entity
 {
     public string? FirstName { get; set; }

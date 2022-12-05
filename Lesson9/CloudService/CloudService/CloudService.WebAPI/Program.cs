@@ -8,11 +8,13 @@ internal class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        //Активация методов расширения. Красиво и лаконично.
         var app = builder
             .DbRegister()
             .ServiceRegister()
             .Build();
 
+        //Инициализация базы данных
         using (var scope = app.Services.CreateScope())
         {
             var initializer = scope.ServiceProvider.GetRequiredService<CloudDbInitializer>();
@@ -26,8 +28,6 @@ internal class Program
         }
 
         app.UseAuthorization();
-
-        //app.UseRouting();//
 
         app.MapControllers();
 

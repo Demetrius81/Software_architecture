@@ -2,7 +2,10 @@
 
 namespace CloudService.Model.Models;
 
-public class IpAddress : Entity, ICloneable
+/// <summary>
+/// Модель IP адреса
+/// </summary>
+public class IpAddress : Entity
 {
     public int Value { get; set; }
 

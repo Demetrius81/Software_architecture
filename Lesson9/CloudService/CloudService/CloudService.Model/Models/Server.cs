@@ -2,7 +2,10 @@
 
 namespace CloudService.Model.Models;
 
-public class Server : Entity, ICloneable
+/// <summary>
+/// Модель сервера
+/// </summary>
+public class Server : Entity
 {
     public int Ram { get; set; }
     public int Rom { get; set; }

@@ -2,7 +2,10 @@
 
 namespace CloudService.Model.Models;
 
-public class Cloud : Entity, ICloneable
+/// <summary>
+/// Модель заказа облака
+/// </summary>
+public class Cloud : Entity
 {
     public int ClientId { get; set; }
     public int IpAddressId { get; set; }

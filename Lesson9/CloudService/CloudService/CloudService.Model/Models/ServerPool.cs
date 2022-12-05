@@ -2,7 +2,10 @@
 
 namespace CloudService.Model.Models;
 
-public class ServerPool : Entity, ICloneable
+/// <summary>
+/// Модель пула серверов
+/// </summary>
+public class ServerPool : Entity
 {
     public int ServerId { get; set; }
 

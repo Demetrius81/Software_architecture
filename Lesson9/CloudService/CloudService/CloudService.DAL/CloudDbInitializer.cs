@@ -6,17 +6,31 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace CloudService.DAL;
+
+/// <summary>
+/// Класс инициализатор базы данных
+/// </summary>
 public class CloudDbInitializer
 {
     private readonly CloudServiceDb _db;
     private readonly ILogger<CloudDbInitializer> _logger;
 
+    /// <summary>
+    /// Конструктор класса
+    /// </summary>
+    /// <param name="db">забилаем из контейнера сервисов контекст базы данных</param>
+    /// <param name="logger">забилаем из контейнера сервисов логер</param>
     public CloudDbInitializer(CloudServiceDb db, ILogger<CloudDbInitializer> logger)
     {
         _db = db;
         _logger = logger;
     }
 
+    /// <summary>
+    /// Метод удаления базы данных в отладочных целях
+    /// </summary>
+    /// <param name="cancel"></param>
+    /// <returns></returns>
     public async Task<bool> RemoveAsync(CancellationToken cancel = default)
     {
         if (!await _db.Database.EnsureDeletedAsync(cancel).ConfigureAwait(false))
@@ -29,6 +43,12 @@ public class CloudDbInitializer
         return false;
     }
 
+    /// <summary>
+    /// Метод инициализации базы данных
+    /// </summary>
+    /// <param name="removeBefore">передаем значение true, если базу данных нужно удалить. По умолчанию - false</param>
+    /// <param name="cancel"></param>
+    /// <returns></returns>
     public async Task InitializeAsync(bool removeBefore = false, CancellationToken cancel = default)
     {
         if (removeBefore) await RemoveAsync(cancel).ConfigureAwait(false);

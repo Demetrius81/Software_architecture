@@ -8,13 +8,24 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CloudService.WebAPI.Infrastructure.Extensions;
 
+/// <summary>
+/// Статический класс расширения. Служит для того, чтобы разгрузить метод Main
+/// </summary>
 internal static class ServiceExtension
 {
+    /// <summary>
+    /// Метод регистрации контекста базы данных в DI контейнере. Реализован через fluent-interface
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException"></exception>
     internal static WebApplicationBuilder DbRegister(this WebApplicationBuilder builder)
     {
+        //Выбираем базу данных с которой будем работать. Выбор осуществляется корректировкой файла appsettings.json
         string connectionType = builder.Configuration["DataBase"] ?? throw new ArgumentException("Не выбрана база данных для работы");
+        //Берем из appsettings.json строку подключения базы данных согласно ранее сделанного выбора
         string connectionString = builder.Configuration.GetConnectionString(connectionType) ?? throw new ArgumentException("Не задана строка подключения базы данных");
-
+        //Здесь при помощи оператора switch мы регистрируем нужный сервис по работе с базой данных.
         switch (connectionType)
         {
             case "SqLite":
@@ -30,6 +41,11 @@ internal static class ServiceExtension
         return builder;
     }
 
+    /// <summary>
+    /// Метод регистрации различных сервисов. Реализован через fluent-interface
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <returns></returns>
     internal static WebApplicationBuilder ServiceRegister(this WebApplicationBuilder builder)
     {
         builder.Services.AddScoped<CloudDbInitializer>();

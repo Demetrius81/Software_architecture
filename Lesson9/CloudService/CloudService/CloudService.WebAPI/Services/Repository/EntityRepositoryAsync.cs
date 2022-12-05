@@ -4,6 +4,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CloudService.WebAPI.Services.Repository;
 
+/// <summary>
+/// Расширенный репозиторий. При регистрации универсальным способом может использоваться несколькими сущностями
+/// </summary>
+/// <typeparam name="T"></typeparam>
 internal class EntityRepositoryAsync<T> : IRepositoryAsync<T> where T : class, IEntity
 {
     private readonly CloudServiceDb _db;

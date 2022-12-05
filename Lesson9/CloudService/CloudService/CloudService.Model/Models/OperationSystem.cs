@@ -1,5 +1,8 @@
 ﻿namespace CloudService.Model;
 
+/// <summary>
+/// Операционные системы
+/// </summary>
 public enum OperationSystem
 {
     Windows = 0,
