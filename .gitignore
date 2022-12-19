@@ -21,3 +21,30 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+Lesson7/ReportService/ReportService/bin/Debug
+Lesson7/ReportService/.vs
+Lesson7/ReportService/ReportService/obj
+*.db-shm
+*.db-wal
+*.db
+/Lesson8/RestaurantService/RestaurantService/obj
+/Lesson8/RestaurantService/.vs/RestaurantService
+/Lesson8/RestaurantService/RestaurantService/bin/Debug/net7.0
+*.user
+/Lesson8/RestaurantService/.vs/ProjectEvaluation
+Lesson9/CloudService/CloudService/.vs
+Lesson9/CloudService/CloudService/CloudService.WebAPI/obj
+Lesson9/CloudService/CloudService/CloudService.DAL/bin
+Lesson9/CloudService/CloudService/CloudService.DAL/obj
+Lesson9/CloudService/CloudService/CloudService.DAL.SqLite/bin
+Lesson9/CloudService/CloudService/CloudService.DAL.SqLite/obj
+Lesson9/CloudService/CloudService/CloudService.Model/bin
+Lesson9/CloudService/CloudService/CloudService.TestConsole/bin
+Lesson9/CloudService/CloudService/CloudService.WebAPI/bin
+Lesson9/CloudService/CloudService/CloudService.TestConsole/obj
+Lesson9/CloudService/CloudService/CloudService.Interfaces/obj
+Lesson9/CloudService/CloudService/CloudService.Model/obj
+Lesson9/CloudService/CloudService/CloudService.WebAPI.Clients/obj
+Lesson9/CloudApp/.vs
+Lesson9/CloudService/CloudService/CloudService.Interfaces/bin
+Lesson9/CloudService/CloudService/CloudService.WebAPI.Clients/bin
